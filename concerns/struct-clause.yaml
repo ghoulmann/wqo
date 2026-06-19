@@ -1,0 +1,41 @@
+title: Independent Clause
+description: The smallest unit of complete grammatical meaning.
+also_known_as:
+- run-on sentences
+- comma splices
+- fused sentences
+- clause boundaries
+wordnet:
+  term: clause
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale: sentence-level
+  concern_type:
+  - grammatical
+  - logical
+  evaluator: automated
+  determinism: rule-violation
+  writing_stage:
+  - editing
+  - publishing
+  address_when: editing
+  impact:
+  - reader-comprehension
+  - rendering
+  risk_severity: functional
+  responsible_role:
+  - copy-editor
+  - ai-tool
+relationships: {}
+diagnostic_question: Are all independent clauses properly separated by coordinating
+  conjunctions, semicolons, or periods?
+evaluation_tools:
+- syntactic_depth.py
+- LanguageTool
+- Vale

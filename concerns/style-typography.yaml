@@ -1,0 +1,43 @@
+title: Typography
+description: Visual design of the text itself, including font families, sizes, line
+  heights, and hierarchy.
+also_known_as:
+- font hierarchy
+- line height
+- visual text design
+- type settings
+- typographic scale
+wordnet:
+  term: typography
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: editorial
+  stage: post-compositional
+  scale: document-level
+  concern_type: stylistic
+  evaluator: human-line-editor
+  determinism: risk-factor
+  writing_stage:
+  - editing
+  - publishing
+  address_when: editing
+  impact:
+  - accessibility
+  - rendering
+  - reader-comprehension
+  risk_severity: functional
+  responsible_role:
+  - author
+  - publisher
+  audience_sensitivity:
+  - low-vision
+  - cognitive-disability
+relationships: {}
+diagnostic_question: Is the type hierarchy consistent (H1>H2>H3>body) and are line
+  height and contrast ratios WCAG compliant?
+evaluation_tools:
+- markdownlint MD013
+- axe accessibility checker
+- Lighthouse

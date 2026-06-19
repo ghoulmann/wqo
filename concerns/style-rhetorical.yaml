@@ -1,0 +1,42 @@
+title: Rhetorical Devices
+description: Figures of speech (e.g., parallelism, metaphors, chiasmus) used strategically
+  to persuade and connect.
+also_known_as:
+- parallelism
+- metaphor
+- chiasmus
+- anaphora
+- rhetorical figures
+wordnet:
+  term: rhetorical
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: editorial
+  stage: post-compositional
+  scale: document-level
+  concern_type: rhetorical
+  evaluator:
+  - human-rhetorician
+  - human-line-editor
+  determinism: philosophy
+  writing_stage:
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: revising
+  impact:
+  - reader-trust
+  - author-credibility
+  risk_severity: functional
+  responsible_role:
+  - author
+  - line-editor
+relationships: {}
+diagnostic_question: Are key lists parallel in structure, and are abstract concepts
+  grounded in concrete metaphors or analogies?
+evaluation_tools:
+- peer review
+- rhetoric audit

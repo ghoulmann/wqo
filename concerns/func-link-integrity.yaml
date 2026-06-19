@@ -1,0 +1,34 @@
+title: Links Work (Link Integrity)
+description: Verification of hyperlink HTTP status codes and correct path routing.
+also_known_as:
+- link checking
+- dead links
+- 404s
+wordnet:
+  term: link integrity
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: functional
+  stage: post-compositional
+  scale: document-level
+  concern_type: technical
+  evaluator: automated
+  determinism: rule-violation
+  writing_stage: publishing
+  address_when: publishing
+  impact:
+  - reader-trust
+  - seo-discoverability
+  - rendering
+  risk_severity: functional
+  responsible_role:
+  - technical-qa
+  - publisher
+relationships: {}
+diagnostic_question: Do all hyperlinks return HTTP 200 and point to the correct destination?
+evaluation_tools:
+- link-checker
+- htmltest
+- markdown-link-check

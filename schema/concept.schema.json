@@ -1,0 +1,362 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "wqo:concept.schema",
+  "title": "Writing Quality Ontology — Concept Entry",
+  "description": "Frontmatter schema for concept entries in the Writing Quality Ontology.",
+  "x-version": "0.5.0",
+  "x-changelog": {
+    "0.1.0": "Initial 5-layer flat taxonomy (Functional, Computational, Structural, Micro, Stylistic).",
+    "0.2.0": "Expanded to 6 classification dimensions; added compositional stage, scale, concern type, evaluator, determinism.",
+    "0.3.0": "Added D7 writing_stage (descriptive) and D8 address_when (triage/prescriptive); added D9 engineering_stage. Layer 4 renamed Mechanical; Layer 5 renamed Editorial.",
+    "0.4.0": "Added D10 impact, D11 risk_severity, D12 responsible_role. Distinguished evaluator (detects) from responsible_role (owns). Added prerequisite_for and cascade_threshold.",
+    "0.5.0": "Added D13 audience_sensitivity. Split 'accessibility' impact into accessibility-technical, accessibility-presentation, accessibility-cognitive. Added cognitive-overload and inclusivity to impact enum. Noted that risk_severity is audience-conditional."
+  },
+  "type": "object",
+  "required": ["title"],
+  "additionalProperties": true,
+  "properties": {
+
+    "title": {
+      "type": "string",
+      "description": "Display name of the concept."
+    },
+
+    "description": {
+      "type": "string",
+      "description": "One-sentence summary used in search results and link popovers."
+    },
+
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Quartz tags. Use hierarchical form: layer:mechanical, writing-stage:editing, etc."
+    },
+
+    "also_known_as": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Informal names, common synonyms, or discipline-specific aliases."
+    },
+
+    "wordnet": {
+      "type": "object",
+      "description": "Pre-pulled WordNet data. Populated by scripts/pull_wordnet.py — do not edit manually.",
+      "properties": {
+        "term": {
+          "type": "string",
+          "description": "The term queried against WordNet."
+        },
+        "definitions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Top synset definitions (up to 3)."
+        },
+        "synonyms": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Lemma names from matched synsets."
+        },
+        "related_forms": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Hypernym chain (1 level) and closely related forms."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "classification": {
+      "type": "object",
+      "description": "Multi-dimensional classification. All fields optional; populate what is known.",
+      "properties": {
+
+        "layer": {
+          "description": "D1 — Editorial layer(s). Primary home + cascade target if applicable.",
+          "$ref": "#/$defs/layerEnum_or_array"
+        },
+
+        "stage": {
+          "description": "D2 — Compositional stage. When in the writing lifecycle does this apply?",
+          "$ref": "#/$defs/compositionalStageEnum_or_array"
+        },
+
+        "scale": {
+          "description": "D3 — Granularity. What unit of text does this concern operate on?",
+          "$ref": "#/$defs/scaleEnum_or_array"
+        },
+
+        "concern_type": {
+          "description": "D4 — What kind of quality is being evaluated?",
+          "$ref": "#/$defs/concernTypeEnum_or_array"
+        },
+
+        "evaluator": {
+          "description": "D5 — Who or what can detect this concern?",
+          "$ref": "#/$defs/evaluatorEnum_or_array"
+        },
+
+        "determinism": {
+          "description": "D6 — Rule type. Is this a hard rule (binary) or a probabilistic risk?",
+          "$ref": "#/$defs/determinismEnum"
+        },
+
+        "writing_stage": {
+          "description": "D7 — Writing process stage(s) where this concern is active or relevant (descriptive, multi-valued).",
+          "$ref": "#/$defs/writingStageEnum_or_array"
+        },
+
+        "address_when": {
+          "description": "D8 — Triage: the earliest writing stage at which addressing this concern is not premature. Single value. Do not fix commas before structure is stable.",
+          "$ref": "#/$defs/writingStageEnum"
+        },
+
+        "engineering_stage": {
+          "description": "D9 — Engineering design stage(s) with an analogous concern (descriptive, multi-valued).",
+          "$ref": "#/$defs/engineeringStageEnum_or_array"
+        },
+
+        "impact": {
+          "description": "D10 — Downstream real-world consequences when this concern fails. Multi-valued. Note: cognitive-overload is a mediating impact (mechanism); others are terminal impacts.",
+          "$ref": "#/$defs/impactEnum_or_array"
+        },
+
+        "risk_severity": {
+          "description": "D11 — Stakes of failure. Note: severity is audience-conditional (see D13); this value reflects the general-reader baseline.",
+          "$ref": "#/$defs/riskSeverityEnum"
+        },
+
+        "responsible_role": {
+          "description": "D12 — Who owns fixing this concern in a production workflow. Distinct from D5 (evaluator = who detects it).",
+          "$ref": "#/$defs/responsibleRoleEnum_or_array"
+        },
+
+        "audience_sensitivity": {
+          "description": "D13 — Reader profiles for whom this concern carries heightened risk relative to the general-reader baseline. Omit if the concern applies uniformly to all readers.",
+          "$ref": "#/$defs/audienceSensitivityEnum_or_array"
+        }
+
+      },
+      "additionalProperties": false
+    },
+
+    "cascade_threshold": {
+      "type": "string",
+      "description": "For concerns with cascade effects: the threshold at which a lower-layer concern (e.g. Mechanical) escalates to a higher-layer failure (e.g. Structural coherence collapse)."
+    },
+
+    "relationships": {
+      "type": "object",
+      "description": "Typed edges to other concept nodes. Keys are relationship type names (open-ended — new types may be added as the ontology develops). Values are concept id(s).",
+      "additionalProperties": {
+        "oneOf": [
+          { "type": "string" },
+          { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+        ]
+      },
+      "x-known-relationship-types": {
+        "subtype_of": "This concept is a specific kind of the target.",
+        "aspect_of": "This concept is one facet or measurable property of the target.",
+        "impediment_to": "This concept is a deterministic obstruction to the target.",
+        "increases_risk_of": "This concept raises the probability of the target (probabilistic, not certain).",
+        "controlled_by": "This concept is governed, constrained, or diagnosed by the target.",
+        "prerequisite_for": "The target concern cannot be usefully addressed until this concern is resolved first.",
+        "measured_by": "The target is a metric or method that quantifies this concept.",
+        "operationalized_as": "The target is how this abstract concept is made concrete or detectable.",
+        "commonly_confused_with": "The target is frequently mistaken for this concept; they are distinct.",
+        "related_to": "Non-directional association; use when no more specific type fits.",
+        "part_of": "This concept is a component of the target.",
+        "addresses": "This concept is a technique or practice that corrects or mitigates the target.",
+        "produces": "Applying or violating this concept generates the target as an output."
+      }
+    },
+
+    "diagnostic_question": {
+      "type": "string",
+      "description": "The single most useful question an editor asks to detect a failure of this concern."
+    },
+
+    "evaluation_tools": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Tools, methods, or procedures that evaluate this concern (human or automated)."
+    }
+
+  },
+
+  "$defs": {
+
+    "layerEnum": {
+      "type": "string",
+      "enum": ["functional", "computational", "structural", "mechanical", "editorial"],
+      "description": "The five editorial layers. Mechanical = correctness (universal rules); Editorial = appropriateness (conventions + pragmatics)."
+    },
+    "layerEnum_or_array": {
+      "oneOf": [
+        { "$ref": "#/$defs/layerEnum" },
+        { "type": "array", "items": { "$ref": "#/$defs/layerEnum" }, "minItems": 1 }
+      ]
+    },
+
+    "compositionalStageEnum": {
+      "type": "string",
+      "enum": ["pre-compositional", "compositional", "post-compositional"]
+    },
+    "compositionalStageEnum_or_array": {
+      "oneOf": [
+        { "$ref": "#/$defs/compositionalStageEnum" },
+        { "type": "array", "items": { "$ref": "#/$defs/compositionalStageEnum" }, "minItems": 1 }
+      ]
+    },
+
+    "scaleEnum": {
+      "type": "string",
+      "enum": ["word-level", "sentence-level", "paragraph-level", "document-level", "system-level"]
+    },
+    "scaleEnum_or_array": {
+      "oneOf": [
+        { "$ref": "#/$defs/scaleEnum" },
+        { "type": "array", "items": { "$ref": "#/$defs/scaleEnum" }, "minItems": 1 }
+      ]
+    },
+
+    "concernTypeEnum": {
+      "type": "string",
+      "enum": [
+        "logical",
+        "grammatical",
+        "rhetorical",
+        "architectural",
+        "stylistic",
+        "computational",
+        "technical"
+      ]
+    },
+    "concernTypeEnum_or_array": {
+      "oneOf": [
+        { "$ref": "#/$defs/concernTypeEnum" },
+        { "type": "array", "items": { "$ref": "#/$defs/concernTypeEnum" }, "minItems": 1 }
+      ]
+    },
+
+    "evaluatorEnum": {
+      "type": "string",
+      "enum": [
+        "automated",
+        "human-structural-editor",
+        "human-line-editor",
+        "human-copy-editor",
+        "human-rhetorician",
+        "human-information-architect",
+        "human-peer-reviewer",
+        "human-technical-qa"
+      ]
+    },
+    "evaluatorEnum_or_array": {
+      "oneOf": [
+        { "$ref": "#/$defs/evaluatorEnum" },
+        { "type": "array", "items": { "$ref": "#/$defs/evaluatorEnum" }, "minItems": 1 }
+      ]
+    },
+
+    "determinismEnum": {
+      "type": "string",
+      "enum": ["rule-violation", "risk-factor", "philosophy"],
+      "description": "rule-violation = binary wrong/right. risk-factor = probabilistic. philosophy = quality lens spanning multiple dimensions."
+    },
+
+    "writingStageEnum": {
+      "type": "string",
+      "enum": ["prewriting", "drafting", "revising", "peer-review", "editing", "publishing"]
+    },
+    "writingStageEnum_or_array": {
+      "oneOf": [
+        { "$ref": "#/$defs/writingStageEnum" },
+        { "type": "array", "items": { "$ref": "#/$defs/writingStageEnum" }, "minItems": 1 }
+      ]
+    },
+
+    "engineeringStageEnum": {
+      "type": "string",
+      "enum": ["define", "research", "brainstorm", "choose", "build", "test", "improve", "communicate"]
+    },
+    "engineeringStageEnum_or_array": {
+      "oneOf": [
+        { "$ref": "#/$defs/engineeringStageEnum" },
+        { "type": "array", "items": { "$ref": "#/$defs/engineeringStageEnum" }, "minItems": 1 }
+      ]
+    },
+
+    "impactEnum": {
+      "type": "string",
+      "enum": [
+        "reader-comprehension",
+        "reader-trust",
+        "author-credibility",
+        "cognitive-overload",
+        "accessibility-technical",
+        "accessibility-presentation",
+        "accessibility-cognitive",
+        "inclusivity",
+        "seo-discoverability",
+        "rag-retrieval",
+        "legal-compliance",
+        "rendering"
+      ],
+      "description": "cognitive-overload is a mediating impact (the mechanism); reader-comprehension etc. are terminal impacts. accessibility split into three distinct concerns by layer."
+    },
+    "impactEnum_or_array": {
+      "oneOf": [
+        { "$ref": "#/$defs/impactEnum" },
+        { "type": "array", "items": { "$ref": "#/$defs/impactEnum" }, "minItems": 1 }
+      ]
+    },
+
+    "riskSeverityEnum": {
+      "type": "string",
+      "enum": ["cosmetic", "functional", "credibility", "safety"],
+      "description": "Baseline severity for the general reader. See D13 audience_sensitivity for populations where severity is higher."
+    },
+
+    "responsibleRoleEnum": {
+      "type": "string",
+      "enum": [
+        "author",
+        "self-editor",
+        "structural-editor",
+        "copy-editor",
+        "line-editor",
+        "peer-reviewer",
+        "information-architect",
+        "technical-qa",
+        "ai-tool",
+        "publisher"
+      ]
+    },
+    "responsibleRoleEnum_or_array": {
+      "oneOf": [
+        { "$ref": "#/$defs/responsibleRoleEnum" },
+        { "type": "array", "items": { "$ref": "#/$defs/responsibleRoleEnum" }, "minItems": 1 }
+      ]
+    },
+
+    "audienceSensitivityEnum": {
+      "type": "string",
+      "enum": [
+        "second-language-learner",
+        "screen-reader-user",
+        "low-vision",
+        "cognitive-disability",
+        "domain-novice",
+        "cross-cultural"
+      ],
+      "description": "Reader profiles for whom this concern's risk_severity is elevated above the general-reader baseline. 'general' is the implicit default and is not listed here."
+    },
+    "audienceSensitivityEnum_or_array": {
+      "oneOf": [
+        { "$ref": "#/$defs/audienceSensitivityEnum" },
+        { "type": "array", "items": { "$ref": "#/$defs/audienceSensitivityEnum" }, "minItems": 1 }
+      ]
+    }
+
+  }
+}

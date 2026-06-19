@@ -1,0 +1,48 @@
+title: Tangled Constructions
+description: Overly nested clauses, passive knots, and misplaced modifiers that obstruct
+  reading ease.
+also_known_as:
+- passive voice
+- misplaced modifiers
+- nested clauses
+- sentence complexity
+- syntactic depth
+wordnet:
+  term: tangled
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: mechanical
+  stage: post-compositional
+  scale: sentence-level
+  concern_type: grammatical
+  evaluator:
+  - automated
+  - human-line-editor
+  determinism: risk-factor
+  writing_stage:
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: revising
+  impact:
+  - reader-comprehension
+  - rag-retrieval
+  risk_severity: functional
+  responsible_role:
+  - self-editor
+  - line-editor
+  - ai-tool
+  audience_sensitivity:
+  - second-language-learner
+  - cognitive-disability
+  - domain-novice
+relationships: {}
+diagnostic_question: Are sentences free of excessive nesting, passive constructions,
+  and misplaced modifiers that require re-reading?
+evaluation_tools:
+- syntactic_depth.py
+- passive_voice.py
+- Hemingway App

@@ -1,0 +1,39 @@
+title: Punctuation
+description: Proper placement of structural guides (commas, semicolons, hyphens, dashes).
+also_known_as:
+- Oxford comma
+- serial comma
+- punctuation style
+- comma rules
+wordnet:
+  term: punctuation
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: mechanical
+  stage: post-compositional
+  scale:
+  - word-level
+  - sentence-level
+  concern_type: grammatical
+  evaluator: automated
+  determinism: rule-violation
+  writing_stage:
+  - editing
+  - publishing
+  address_when: editing
+  impact:
+  - reader-comprehension
+  - rendering
+  risk_severity: cosmetic
+  responsible_role:
+  - copy-editor
+  - ai-tool
+relationships: {}
+diagnostic_question: Are all punctuation marks consistent with the house style guide
+  (e.g., Oxford comma enforced consistently)?
+evaluation_tools:
+- Vale
+- Grammarly
+- custom linting rules

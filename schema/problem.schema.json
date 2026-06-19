@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "wqo:problem.schema",
+  "title": "WQO — Operational Problem Entry",
+  "description": "Schema for enterprise knowledge/documentation operational problem entries. Each entry maps a real-world failure mode to WQO text-quality concerns and project tooling.",
+  "x-version": "1.0.0",
+  "x-note": "system_boundary is the bridging dimension between WQO text concerns (how text fails) and operational problems (where in the doc lifecycle failure occurs).",
+  "type": "object",
+  "required": ["id", "title", "problem_statement"],
+  "additionalProperties": false,
+  "properties": {
+
+    "id": {
+      "type": "string",
+      "pattern": "^P-[0-9]{2,3}$",
+      "description": "Canonical problem identifier, e.g. P-01."
+    },
+
+    "title": {
+      "type": "string",
+      "description": "Short display name of the problem."
+    },
+
+    "problem_statement": {
+      "type": "string",
+      "description": "One to three sentences describing what fails and the observable symptom."
+    },
+
+    "causal_mechanism": {
+      "type": "string",
+      "description": "The root cause or trigger — why this failure occurs. Often a process gap, architectural assumption, or missing gate."
+    },
+
+    "domain_category": {
+      "type": "string",
+      "enum": [
+        "documentation-drift",
+        "quality-defects",
+        "migration",
+        "governance",
+        "tool-defects",
+        "ai-ml-limitations",
+        "hitl-evaluation",
+        "hardware-infrastructure",
+        "organizational",
+        "pipeline-process"
+      ],
+      "description": "High-level domain category grouping related problems."
+    },
+
+    "system_boundary": {
+      "type": "string",
+      "enum": [
+        "authoring",
+        "versioning",
+        "build-publish",
+        "consumption",
+        "governance",
+        "infrastructure"
+      ],
+      "description": "The stage in the documentation lifecycle where this failure manifests. Bridges WQO text-quality concerns and operational failure modes. authoring=while writing; versioning=at VCS/commit time; build-publish=SSG/CI/CD/migration; consumption=at read time by humans or machines; governance=ownership/review/policy layer; infrastructure=hardware/platform constraints."
+    },
+
+    "impact": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "reader-comprehension",
+          "reader-trust",
+          "author-credibility",
+          "cognitive-overload",
+          "accessibility-technical",
+          "accessibility-presentation",
+          "accessibility-cognitive",
+          "inclusivity",
+          "seo-discoverability",
+          "rag-retrieval",
+          "legal-compliance",
+          "rendering"
+        ]
+      },
+      "description": "Downstream real-world consequences when this problem is unresolved. Reuses WQO D10 impact vocabulary."
+    },
+
+    "risk_severity": {
+      "type": "string",
+      "enum": ["cosmetic", "functional", "credibility", "safety"],
+      "description": "Stakes of failure. Reuses WQO D11 vocabulary. cosmetic=low; functional=blocks tasks; credibility=erodes trust; safety=security/compliance/production risk."
+    },
+
+    "resolution_pattern": {
+      "type": "string",
+      "description": "Short name for the fix archetype. Examples: ci-gate, ownership-protocol, content-audit, genre-enforcement, semantic-linting, metadata-expiry, audit-gate, model-sizing, ux-design, prompt-chain."
+    },
+
+    "wqo_links": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "IDs of WQO concept nodes (from concerns/*.md or concept.schema.json) that this problem is addressed by or directly related to."
+    },
+
+    "project_links": {
+      "type": "array",
+      "description": "Projects that detect, address, generate, consume, or govern this problem.",
+      "items": {
+        "type": "object",
+        "required": ["name", "path", "relationship"],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Short project identifier, e.g. rhetor-linter."
+          },
+          "path": {
+            "type": "string",
+            "description": "Absolute filesystem path to the project root."
+          },
+          "relationship": {
+            "type": "string",
+            "enum": ["detects", "addresses", "generates", "consumes", "governs"],
+            "description": "detects=surfaces the problem; addresses=fixes or mitigates it; generates=produces content that may manifest the problem; consumes=ingests affected content; governs=owns policy over the problem domain."
+          }
+        }
+      }
+    }
+
+  }
+}

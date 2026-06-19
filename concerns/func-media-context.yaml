@@ -1,0 +1,49 @@
+title: Images Contextually Correct
+description: Aligning visual assets (images, screenshots, diagrams) with the surrounding
+  textual explanation.
+also_known_as:
+- stale screenshots
+- outdated visuals
+- image accuracy
+- screenshot drift
+wordnet:
+  term: media context
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: functional
+  stage: post-compositional
+  scale:
+  - paragraph-level
+  - document-level
+  concern_type: technical
+  evaluator:
+  - human-structural-editor
+  - human-information-architect
+  determinism: risk-factor
+  writing_stage:
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: revising
+  impact:
+  - reader-comprehension
+  - reader-trust
+  - author-credibility
+  risk_severity: safety
+  responsible_role:
+  - author
+  - structural-editor
+  audience_sensitivity:
+  - screen-reader-user
+  - low-vision
+  - cognitive-disability
+relationships: {}
+diagnostic_question: Does every image or diagram accurately reflect the current state
+  described in the surrounding text?
+evaluation_tools:
+- manual review
+- screenshot audit
+- version diff

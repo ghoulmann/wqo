@@ -1,0 +1,35 @@
+title: Layout Nits
+description: Correcting minor typographic visual bugs like isolated words or single
+  lines dangling across page breaks.
+also_known_as:
+- widows
+- orphans
+- page breaks
+- typesetting nits
+- danglers
+wordnet:
+  term: layout nits
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: editorial
+  stage: post-compositional
+  scale: document-level
+  concern_type: stylistic
+  evaluator: human-line-editor
+  determinism: rule-violation
+  writing_stage: publishing
+  address_when: publishing
+  impact:
+  - rendering
+  - accessibility
+  risk_severity: cosmetic
+  responsible_role: publisher
+  audience_sensitivity: low-vision
+relationships: {}
+diagnostic_question: Are there any dangling single words (widows/orphans) or awkward
+  page breaks that disrupt reading flow?
+evaluation_tools:
+- CSS print preview
+- PDF export review

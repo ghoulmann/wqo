@@ -1,0 +1,49 @@
+title: Tone & Voice
+description: Consistency in the emotional resonance, attitude, and persona of the
+  brand or author.
+also_known_as:
+- brand voice
+- persona
+- register
+- emotional tone
+- voice consistency
+wordnet:
+  term: tone
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: editorial
+  stage: post-compositional
+  scale: document-level
+  concern_type:
+  - rhetorical
+  - stylistic
+  evaluator:
+  - automated
+  - human-line-editor
+  determinism: risk-factor
+  writing_stage:
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: revising
+  impact:
+  - reader-trust
+  - author-credibility
+  risk_severity: credibility
+  responsible_role:
+  - author
+  - line-editor
+  - ai-tool
+  audience_sensitivity:
+  - cross-cultural
+  - cognitive-disability
+relationships: {}
+diagnostic_question: Is the tone consistent with brand voice guidelines throughout
+  — neither too formal nor too casual for the audience?
+evaluation_tools:
+- tone.py
+- unsupported_claim.py
+- peer review

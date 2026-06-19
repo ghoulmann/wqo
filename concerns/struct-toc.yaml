@@ -1,0 +1,39 @@
+title: Table of Contents (TOC)
+description: The navigational mapping system of a document, outlining headings and
+  page/section routing.
+also_known_as:
+- TOC
+- navigation map
+- document outline
+- table of contents
+wordnet:
+  term: toc
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale: document-level
+  concern_type: architectural
+  evaluator: automated
+  determinism: risk-factor
+  writing_stage:
+  - editing
+  - publishing
+  address_when: editing
+  impact:
+  - reader-comprehension
+  - accessibility
+  risk_severity: cosmetic
+  responsible_role:
+  - author
+  - technical-qa
+relationships: {}
+diagnostic_question: Is there a linked TOC for long documents, and does it accurately
+  reflect all heading titles and order?
+evaluation_tools:
+- markdown TOC generator
+- manual check

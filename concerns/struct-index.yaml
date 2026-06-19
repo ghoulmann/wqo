@@ -1,0 +1,36 @@
+title: Index
+description: An alphabetical list of key terms, concepts, and names with pointers
+  to their occurrences.
+also_known_as:
+- back-matter index
+- term index
+- alphabetical index
+wordnet:
+  term: index
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale: document-level
+  concern_type: architectural
+  evaluator: human-information-architect
+  determinism: risk-factor
+  writing_stage: publishing
+  address_when: publishing
+  impact:
+  - reader-comprehension
+  - accessibility
+  risk_severity: cosmetic
+  responsible_role:
+  - information-architect
+  - publisher
+relationships: {}
+diagnostic_question: For long-form reference materials, is there an alphabetical index
+  of key terms with accurate section references?
+evaluation_tools:
+- indexing software
+- manual review

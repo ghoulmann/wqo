@@ -1,0 +1,40 @@
+title: Links Contextually Correct
+description: Ensuring that hyperlinks point to materials that are relevant and accurate
+  for the context in which they are placed.
+also_known_as:
+- contextual linking
+- relevant links
+- link accuracy
+wordnet:
+  term: link relevance
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: functional
+  stage: post-compositional
+  scale: document-level
+  concern_type: technical
+  evaluator:
+  - human-line-editor
+  - human-structural-editor
+  determinism: risk-factor
+  writing_stage:
+  - peer-review
+  - editing
+  - publishing
+  address_when: peer-review
+  impact:
+  - reader-trust
+  - reader-comprehension
+  - author-credibility
+  risk_severity: credibility
+  responsible_role:
+  - peer-reviewer
+  - structural-editor
+relationships: {}
+diagnostic_question: Does every hyperlink directly support the specific claim or context
+  where it appears?
+evaluation_tools:
+- manual review
+- peer review

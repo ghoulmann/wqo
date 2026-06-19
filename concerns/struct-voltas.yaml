@@ -1,0 +1,45 @@
+title: Voltas & Pivots
+description: The execution of structural shifts, tone shifts, or arguments within
+  a document.
+also_known_as:
+- pivots
+- tonal shifts
+- argument turns
+- structural transitions
+wordnet:
+  term: voltas
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale:
+  - paragraph-level
+  - document-level
+  concern_type: architectural
+  evaluator:
+  - human-structural-editor
+  - human-rhetorician
+  determinism: risk-factor
+  writing_stage:
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: revising
+  impact:
+  - reader-comprehension
+  - reader-trust
+  risk_severity: functional
+  responsible_role:
+  - author
+  - structural-editor
+relationships: {}
+diagnostic_question: Are structural pivots and tonal shifts properly signaled with
+  narrative or logical ramp-ups?
+evaluation_tools:
+- peer review
+- structural outline review

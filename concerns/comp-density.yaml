@@ -1,0 +1,47 @@
+title: Information Density
+description: The ratio of high-value semantic meaning to the absolute volume of token/word
+  count consumed.
+also_known_as:
+- propositional density
+- verbosity
+- information-to-noise ratio
+- signal-to-noise
+wordnet:
+  term: density
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: computational
+  stage:
+  - compositional
+  - post-compositional
+  scale:
+  - sentence-level
+  - paragraph-level
+  concern_type: computational
+  evaluator:
+  - automated
+  - human-line-editor
+  determinism: risk-factor
+  writing_stage:
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: revising
+  impact:
+  - reader-comprehension
+  - rag-retrieval
+  risk_severity: functional
+  responsible_role:
+  - self-editor
+  - line-editor
+  - ai-tool
+relationships: {}
+diagnostic_question: Is the signal-to-noise ratio high — is every sentence earning
+  its word count?
+evaluation_tools:
+- metric_density.py
+- Hemingway App
+- Flesch-Kincaid

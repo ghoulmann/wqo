@@ -1,0 +1,50 @@
+title: Precision
+description: The exact, unambiguous alignment of words to their intended concepts;
+  airtight definitions.
+also_known_as:
+- unambiguous language
+- exact terminology
+- definitional precision
+- tight phrasing
+wordnet:
+  term: precision
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale: word-level
+  concern_type: logical
+  evaluator:
+  - human-structural-editor
+  - human-rhetorician
+  determinism: risk-factor
+  writing_stage:
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: revising
+  impact:
+  - reader-comprehension
+  - reader-trust
+  - legal-compliance
+  risk_severity: safety
+  responsible_role:
+  - author
+  - structural-editor
+  - peer-reviewer
+  audience_sensitivity:
+  - second-language-learner
+  - domain-novice
+  - cognitive-disability
+relationships: {}
+diagnostic_question: Are all key terms precisely defined and free of vague pronouns
+  or ambiguous phrasing?
+evaluation_tools:
+- peer review
+- SME review
+- glossary check

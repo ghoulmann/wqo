@@ -1,0 +1,45 @@
+title: Token Budget & Length
+description: Meeting physical context window limits or target generation lengths of
+  an LLM.
+also_known_as:
+- context window
+- token limit
+- length constraint
+- max tokens
+wordnet:
+  term: token budget
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: computational
+  stage:
+  - compositional
+  - post-compositional
+  scale:
+  - document-level
+  - system-level
+  concern_type: computational
+  evaluator: automated
+  determinism: rule-violation
+  writing_stage:
+  - drafting
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: drafting
+  impact:
+  - rag-retrieval
+  - rendering
+  risk_severity: functional
+  responsible_role:
+  - author
+  - ai-tool
+relationships: {}
+diagnostic_question: Does the total word/token count fall within the target model
+  context window or generation budget?
+evaluation_tools:
+- tiktoken
+- word-count
+- token-counter

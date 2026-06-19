@@ -1,0 +1,39 @@
+title: Images/Media Load
+description: The successful client-side rendering of static images, charts, and interactive
+  media.
+also_known_as:
+- broken images
+- media rendering
+- asset loading
+wordnet:
+  term: media load
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: functional
+  stage: post-compositional
+  scale: document-level
+  concern_type: technical
+  evaluator: automated
+  determinism: rule-violation
+  writing_stage: publishing
+  address_when: publishing
+  impact:
+  - rendering
+  - reader-trust
+  - accessibility
+  risk_severity: functional
+  responsible_role:
+  - technical-qa
+  - publisher
+  audience_sensitivity:
+  - screen-reader-user
+  - low-vision
+relationships: {}
+diagnostic_question: Do all images and media assets render correctly and load within
+  2 seconds?
+evaluation_tools:
+- Lighthouse
+- htmltest
+- browser DevTools

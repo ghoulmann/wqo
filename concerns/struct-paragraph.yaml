@@ -1,0 +1,44 @@
+title: Paragraph
+description: A single cohesive unit of thought containing a topic sentence and supporting
+  evidence.
+also_known_as:
+- paragraph unity
+- paragraph length
+- one idea per paragraph
+- paragraph discipline
+wordnet:
+  term: paragraph
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale: paragraph-level
+  concern_type: architectural
+  evaluator:
+  - automated
+  - human-line-editor
+  determinism: risk-factor
+  writing_stage:
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: revising
+  impact:
+  - reader-comprehension
+  - rag-retrieval
+  risk_severity: functional
+  responsible_role:
+  - self-editor
+  - line-editor
+relationships: {}
+diagnostic_question: Does each paragraph contain exactly one main idea and stay under
+  150 words?
+evaluation_tools:
+- unity.py
+- word count
+- Hemingway App

@@ -1,0 +1,51 @@
+title: Coherence
+description: The underlying logic, sequencing, and accessibility of arguments to a
+  human mind.
+also_known_as:
+- logical flow
+- argument structure
+- sequencing
+- macro-level organization
+wordnet:
+  term: coherence
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale:
+  - paragraph-level
+  - document-level
+  concern_type: logical
+  evaluator:
+  - automated
+  - human-structural-editor
+  determinism: risk-factor
+  writing_stage:
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: revising
+  impact:
+  - reader-comprehension
+  - reader-trust
+  - rag-retrieval
+  risk_severity: safety
+  responsible_role:
+  - author
+  - structural-editor
+  - ai-tool
+  audience_sensitivity:
+  - second-language-learner
+  - cognitive-disability
+  - domain-novice
+relationships: {}
+diagnostic_question: Does the argument follow a logical, predictable sequence that
+  a reader can follow without backtracking?
+evaluation_tools:
+- coherence.py
+- outline review

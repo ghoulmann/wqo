@@ -1,0 +1,49 @@
+title: Unity
+description: Consistent adherence to the core thesis or objective throughout the entire
+  piece.
+also_known_as:
+- thematic unity
+- document focus
+- single-thesis discipline
+- staying on topic
+wordnet:
+  term: unity
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale:
+  - paragraph-level
+  - document-level
+  concern_type:
+  - logical
+  - architectural
+  evaluator:
+  - automated
+  - human-structural-editor
+  determinism: risk-factor
+  writing_stage:
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: revising
+  impact:
+  - reader-comprehension
+  - reader-trust
+  risk_severity: functional
+  responsible_role:
+  - author
+  - structural-editor
+  - ai-tool
+relationships: {}
+diagnostic_question: Does every paragraph and section directly serve the core thesis
+  or objective of the document?
+evaluation_tools:
+- unity.py
+- peer review
+- outline review

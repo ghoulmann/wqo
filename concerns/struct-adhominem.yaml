@@ -1,0 +1,47 @@
+title: Ad Hominem
+description: An informal fallacy where the character or personal traits of an opponent
+  are attacked instead of their argument.
+also_known_as:
+- personal attack
+- character attack
+- poisoning the well
+- name-calling
+wordnet:
+  term: adhominem
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale:
+  - paragraph-level
+  - document-level
+  concern_type:
+  - logical
+  - rhetorical
+  evaluator:
+  - automated
+  - human-rhetorician
+  determinism: rule-violation
+  writing_stage:
+  - peer-review
+  - editing
+  - publishing
+  address_when: peer-review
+  impact:
+  - author-credibility
+  - reader-trust
+  - legal-compliance
+  risk_severity: credibility
+  responsible_role:
+  - author
+  - peer-reviewer
+relationships: {}
+diagnostic_question: Does the text critique only claims and evidence, never attacking
+  the person making the argument?
+evaluation_tools:
+- tone.py
+- peer review

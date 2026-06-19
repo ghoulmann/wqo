@@ -1,0 +1,39 @@
+title: Editorial/House Style Compliance
+description: Adherence to specific organizational or publisher manuals (AP, Chicago,
+  MLA) and minor nits.
+also_known_as:
+- AP style
+- Chicago style
+- house style
+- brand style guide
+- style nits
+wordnet:
+  term: compliance
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: editorial
+  stage: post-compositional
+  scale: document-level
+  concern_type: stylistic
+  evaluator: automated
+  determinism: rule-violation
+  writing_stage:
+  - editing
+  - publishing
+  address_when: editing
+  impact:
+  - author-credibility
+  - reader-trust
+  risk_severity: cosmetic
+  responsible_role:
+  - copy-editor
+  - ai-tool
+relationships: {}
+diagnostic_question: Is the document consistent with the house style guide on quote
+  types, capitalization, number formatting, and Oxford comma?
+evaluation_tools:
+- Vale house style rules
+- markdownlint MD003
+- Grammarly

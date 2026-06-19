@@ -1,0 +1,46 @@
+title: Strawman Fallacy
+description: An informal fallacy where an opponent's argument is oversimplified or
+  caricatured to make it easier to attack.
+also_known_as:
+- misrepresentation
+- caricature argument
+- straw man
+- straw-man argument
+wordnet:
+  term: strawman
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale:
+  - paragraph-level
+  - document-level
+  concern_type:
+  - logical
+  - rhetorical
+  evaluator:
+  - human-rhetorician
+  - human-structural-editor
+  determinism: risk-factor
+  writing_stage:
+  - peer-review
+  - editing
+  - publishing
+  address_when: peer-review
+  impact:
+  - author-credibility
+  - reader-trust
+  risk_severity: credibility
+  responsible_role:
+  - peer-reviewer
+  - author
+relationships: {}
+diagnostic_question: Are opposing views presented in their strongest, most accurate
+  form before being countered?
+evaluation_tools:
+- peer review
+- argument audit

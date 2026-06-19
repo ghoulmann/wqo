@@ -1,0 +1,45 @@
+title: Discrete Document
+description: The boundaries separating individual documents within a broader multi-document
+  series or system.
+also_known_as:
+- document scope
+- single responsibility
+- topic isolation
+- doc boundaries
+wordnet:
+  term: discrete doc
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale: document-level
+  concern_type: architectural
+  evaluator:
+  - human-information-architect
+  - human-structural-editor
+  determinism: risk-factor
+  writing_stage:
+  - drafting
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: drafting
+  impact:
+  - reader-comprehension
+  - seo-discoverability
+  - rag-retrieval
+  risk_severity: functional
+  responsible_role:
+  - information-architect
+  - author
+relationships: {}
+diagnostic_question: Does each document have a single, clearly scoped purpose that
+  does not duplicate another document?
+evaluation_tools:
+- jtbd-tool
+- information architecture review

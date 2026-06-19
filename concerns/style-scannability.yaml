@@ -1,0 +1,53 @@
+title: Scannability
+description: Visual layout and information design optimizing quick reading (bolding,
+  bullet lists, callouts).
+also_known_as:
+- visual hierarchy
+- F-pattern reading
+- scannable layout
+- bullet points
+- callouts
+wordnet:
+  term: scannability
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: editorial
+  stage: post-compositional
+  scale:
+  - paragraph-level
+  - document-level
+  concern_type:
+  - stylistic
+  - architectural
+  evaluator:
+  - automated
+  - human-line-editor
+  determinism: risk-factor
+  writing_stage:
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: revising
+  impact:
+  - reader-comprehension
+  - accessibility
+  - seo-discoverability
+  risk_severity: functional
+  responsible_role:
+  - author
+  - line-editor
+  - ai-tool
+  audience_sensitivity:
+  - cognitive-disability
+  - low-vision
+  - domain-novice
+relationships: {}
+diagnostic_question: Are lists of 3+ items bulleted, key terms bolded, and long prose
+  broken into scannable sections?
+evaluation_tools:
+- attention.py
+- Hemingway App
+- eye-tracking test

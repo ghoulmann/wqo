@@ -1,0 +1,42 @@
+title: System Architecture
+description: The global mapping, routing, and structuring of complex networks of documents
+  (wikis, manual series).
+also_known_as:
+- documentation architecture
+- knowledge base structure
+- doc system design
+- information architecture
+wordnet:
+  term: system arch
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale: system-level
+  concern_type: architectural
+  evaluator: human-information-architect
+  determinism: risk-factor
+  writing_stage:
+  - drafting
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: drafting
+  impact:
+  - reader-comprehension
+  - seo-discoverability
+  - rag-retrieval
+  risk_severity: credibility
+  responsible_role: information-architect
+  audience_sensitivity: domain-novice
+relationships: {}
+diagnostic_question: Is there a clear, explicit map of how all documents in the system
+  relate to and link to each other?
+evaluation_tools:
+- dependency graph visualization
+- IA review

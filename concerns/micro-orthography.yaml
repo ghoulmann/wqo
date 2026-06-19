@@ -1,0 +1,39 @@
+title: Orthography
+description: Character-level spelling correctness and typos.
+also_known_as:
+- spelling
+- typos
+- homophones
+- misspellings
+wordnet:
+  term: orthography
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: mechanical
+  stage: post-compositional
+  scale: word-level
+  concern_type: grammatical
+  evaluator: automated
+  determinism: rule-violation
+  writing_stage:
+  - editing
+  - publishing
+  address_when: editing
+  impact:
+  - reader-trust
+  - author-credibility
+  - seo-discoverability
+  risk_severity: credibility
+  responsible_role:
+  - copy-editor
+  - ai-tool
+  audience_sensitivity: second-language-learner
+relationships: {}
+diagnostic_question: Are there zero misspelled words, including contextual homophones
+  like their/there?
+evaluation_tools:
+- Vale spell check
+- aspell
+- Grammarly

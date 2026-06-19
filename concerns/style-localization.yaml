@@ -1,0 +1,43 @@
+title: Localization
+description: Adapting regional spelling, grammar, date structures, and idioms to match
+  target locales.
+also_known_as:
+- regional spelling
+- locale settings
+- UK vs US English
+- l10n
+- i18n
+wordnet:
+  term: localization
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: editorial
+  stage: post-compositional
+  scale: document-level
+  concern_type: stylistic
+  evaluator: automated
+  determinism: rule-violation
+  writing_stage:
+  - editing
+  - publishing
+  address_when: editing
+  impact:
+  - reader-trust
+  - seo-discoverability
+  - legal-compliance
+  risk_severity: credibility
+  responsible_role:
+  - copy-editor
+  - publisher
+  audience_sensitivity:
+  - cross-cultural
+  - second-language-learner
+relationships: {}
+diagnostic_question: Are all spelling, date formats, currency symbols, and idioms
+  consistent with the target locale?
+evaluation_tools:
+- Vale locale rules
+- aspell locale
+- i18n checker

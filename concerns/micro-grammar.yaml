@@ -1,0 +1,44 @@
+title: Grammar & Syntax
+description: Adherence to syntactic conventions, tenses, and subject-verb agreements.
+also_known_as:
+- subject-verb agreement
+- tense consistency
+- syntax errors
+- grammatical correctness
+wordnet:
+  term: grammar
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: mechanical
+  stage: post-compositional
+  scale: sentence-level
+  concern_type: grammatical
+  evaluator:
+  - automated
+  - human-line-editor
+  determinism: rule-violation
+  writing_stage:
+  - editing
+  - publishing
+  address_when: editing
+  impact:
+  - reader-trust
+  - author-credibility
+  - reader-comprehension
+  risk_severity: credibility
+  responsible_role:
+  - copy-editor
+  - ai-tool
+  audience_sensitivity:
+  - second-language-learner
+  - cognitive-disability
+relationships: {}
+diagnostic_question: Does every sentence have correct subject-verb agreement and consistent
+  tense throughout?
+evaluation_tools:
+- Vale
+- Grammarly
+- syntactic_depth.py
+- LanguageTool

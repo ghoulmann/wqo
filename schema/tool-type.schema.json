@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "wqo:tool-type.schema",
+  "title": "WQO — Tool Type Entry",
+  "description": "Schema for entries in the WQO tool-type taxonomy. A tool type is a category of instrument, method, or infrastructure used in document production. Entries span all production eras and media. Named products and frameworks appear as non-normative examples only.",
+  "x-version": "1.0.0",
+  "x-note": "stage values align with D7 writing_stage in concept.schema.json. persona values align with D12 responsible_role. category groups tool types by nature of the instrument.",
+  "type": "object",
+  "required": ["id", "name", "category", "description"],
+  "additionalProperties": false,
+  "properties": {
+
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "Canonical kebab-case identifier, e.g. linter, style-guide, typewriter."
+    },
+
+    "name": {
+      "type": "string",
+      "description": "Display name of the tool type."
+    },
+
+    "category": {
+      "type": "string",
+      "enum": [
+        "digital-software",
+        "method-framework",
+        "physical-analog",
+        "platform-infrastructure"
+      ],
+      "description": "Nature of the instrument. digital-software=applications and automated tools; method-framework=structured practices, standards, and guidelines; physical-analog=material tools and pre-digital technologies; platform-infrastructure=hosting, collaboration, and coordination environments."
+    },
+
+    "description": {
+      "type": "string",
+      "description": "One to two sentences describing what this tool type does and when it is relevant in document production."
+    },
+
+    "stage": {
+      "oneOf": [
+        { "$ref": "#/$defs/writingStageEnum" },
+        { "type": "array", "items": { "$ref": "#/$defs/writingStageEnum" }, "minItems": 1 }
+      ],
+      "description": "Writing stage(s) at which this tool type is characteristically active. Aligns with D7 writing_stage. Omit if the tool type spans all stages or the affinity is not meaningful."
+    },
+
+    "persona": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/personaEnum" },
+      "description": "Production role(s) that characteristically use this tool type. Aligns with D12 responsible_role. Omit or use empty array if the tool type is role-agnostic."
+    },
+
+    "examples": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Non-normative illustrative instances — named products, specific frameworks, or historical artefacts. Not exhaustive."
+    },
+
+    "also_known_as": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Informal names, discipline-specific synonyms, or alternate terms for this tool type."
+    },
+
+    "notes": {
+      "type": "string",
+      "description": "Optional clarifying remarks, scope boundaries, or distinctions from similar tool types."
+    }
+
+  },
+
+  "$defs": {
+
+    "writingStageEnum": {
+      "type": "string",
+      "enum": ["prewriting", "drafting", "revising", "peer-review", "editing", "publishing"],
+      "description": "Aligns with D7 writing_stage in concept.schema.json."
+    },
+
+    "personaEnum": {
+      "type": "string",
+      "enum": [
+        "author",
+        "self-editor",
+        "structural-editor",
+        "copy-editor",
+        "line-editor",
+        "peer-reviewer",
+        "information-architect",
+        "technical-qa",
+        "publisher"
+      ],
+      "description": "Aligns with D12 responsible_role in concept.schema.json (ai-tool excluded — it is a tool type, not a persona)."
+    }
+
+  }
+}

@@ -1,0 +1,49 @@
+title: False Signposting
+description: Using transitions that misrepresent the logical relationship between
+  clauses (e.g., using 'therefore' when no cause exists).
+also_known_as:
+- mismatched connectives
+- false transitions
+- logical connector mismatch
+wordnet:
+  term: signposting
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale:
+  - sentence-level
+  - paragraph-level
+  concern_type: architectural
+  evaluator:
+  - automated
+  - human-line-editor
+  determinism: rule-violation
+  writing_stage:
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: revising
+  impact:
+  - reader-comprehension
+  - reader-trust
+  risk_severity: functional
+  responsible_role:
+  - self-editor
+  - line-editor
+  - ai-tool
+  audience_sensitivity:
+  - cognitive-disability
+  - domain-novice
+relationships: {}
+diagnostic_question: Do transitional connectives (therefore, however, consequently)
+  accurately reflect the logical relationship between clauses?
+evaluation_tools:
+- forward_ref.py
+- signposting.py (planned)
+- manual audit

@@ -1,0 +1,46 @@
+title: False Dilemma
+description: An informal fallacy presenting only two alternative states when a wider
+  spectrum of options exists.
+also_known_as:
+- binary framing
+- either/or fallacy
+- black-and-white thinking
+- false choice
+wordnet:
+  term: falsedilemma
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale: paragraph-level
+  concern_type:
+  - logical
+  - rhetorical
+  evaluator:
+  - automated
+  - human-rhetorician
+  determinism: risk-factor
+  writing_stage:
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: revising
+  impact:
+  - reader-comprehension
+  - reader-trust
+  - author-credibility
+  risk_severity: credibility
+  responsible_role:
+  - author
+  - structural-editor
+relationships: {}
+diagnostic_question: Does the text acknowledge middle-ground options, or does it present
+  a forced binary choice?
+evaluation_tools:
+- binary_framing.py (planned)
+- peer review

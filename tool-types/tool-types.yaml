@@ -1,0 +1,501 @@
+# WQO Tool-Type Taxonomy
+# Schema: ../schema/tool-type.schema.json (v1.0.0)
+#
+# A tool type is a category of instrument, method, or infrastructure used in document production.
+# Named products and frameworks appear as non-normative examples only — the taxonomy is category-level.
+#
+# stage values align with D7 writing_stage: prewriting | drafting | revising | peer-review | editing | publishing
+# persona values align with D12 responsible_role (ai-tool excluded — it is a tool type here, not a persona)
+
+tool_types:
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # CATEGORY: digital-software
+  # Applications and automated tools that operate on digital text
+  # ─────────────────────────────────────────────────────────────────────────────
+
+  - id: spell-checker
+    name: Spell Checker
+    category: digital-software
+    description: >
+      Automated detection and correction of misspelled words, often with
+      suggestions. The digital successor to the correction ribbon and correction
+      fluid; now embedded in nearly every text input surface.
+    stage: [drafting, revising, editing]
+    persona: [author, self-editor, copy-editor]
+    examples:
+      - autocorrect (mobile keyboards)
+      - Microsoft Word spell check
+      - Grammarly (spell component)
+      - Hunspell (open-source engine)
+
+  - id: grammar-checker
+    name: Grammar and Style Checker
+    category: digital-software
+    description: >
+      Automated detection of grammatical errors, awkward constructions, and
+      style violations beyond spelling. Ranges from rule-based flagging to
+      LLM-assisted suggestions.
+    stage: [drafting, revising, editing]
+    persona: [author, self-editor, copy-editor, line-editor]
+    examples:
+      - Grammarly
+      - LanguageTool
+      - ProWritingAid
+      - Hemingway Editor
+
+  - id: linter
+    name: Linter
+    category: digital-software
+    description: >
+      Rule-based automated quality checker that validates text or markup against
+      a defined ruleset — style, structure, vocabulary, or metadata constraints.
+      Operates on files or pipelines, not interactively.
+    stage: [revising, editing, publishing]
+    persona: [author, technical-qa]
+    examples:
+      - Vale (prose style linting)
+      - markdownlint (Markdown structure)
+      - rhetor-linter (WQO concern linting, project-local)
+      - alex (inclusive language)
+
+  - id: thesaurus
+    name: Thesaurus
+    category: digital-software
+    description: >
+      Synonym, antonym, and related-word reference used during composition or
+      editing to improve precision or variety of vocabulary. Available as
+      standalone reference, embedded widget, or API.
+    stage: [drafting, revising, editing]
+    persona: [author, self-editor, copy-editor, line-editor]
+    examples:
+      - Merriam-Webster Thesaurus
+      - Power Thesaurus
+      - Microsoft Word thesaurus (embedded)
+      - WordNet (programmatic)
+
+  - id: citation-manager
+    name: Citation Manager
+    category: digital-software
+    description: >
+      Tool for collecting, organising, and formatting bibliographic references.
+      Outputs citations in a target style (MLA, APA, Chicago) and manages
+      in-text and end-of-document reference lists.
+    stage: [prewriting, drafting, editing]
+    persona: [author, self-editor]
+    examples:
+      - Zotero
+      - EndNote
+      - Mendeley
+      - BibTeX / BibLaTeX
+
+  - id: originality-checker
+    name: Originality and Plagiarism Checker
+    category: digital-software
+    description: >
+      Detects unattributed reuse, textual similarity to existing sources, or
+      AI-generated content. Used at submission or editorial review gates to
+      verify content integrity.
+    stage: [peer-review, editing, publishing]
+    persona: [peer-reviewer, technical-qa, publisher]
+    also_known_as: [plagiarism checker, similarity detector]
+    examples:
+      - Turnitin
+      - iThenticate
+      - Copyscape
+      - Unicheck
+
+  - id: vcs
+    name: Version Control System
+    category: digital-software
+    description: >
+      Tracks changes to text assets over time, supporting branching, merging,
+      attribution, and rollback. In Docs-as-Code workflows, the primary mechanism
+      for managing document history and concurrent authoring.
+    stage: [drafting, revising, publishing]
+    persona: [author, technical-qa, publisher]
+    also_known_as: [revision control, source control]
+    examples:
+      - Git
+      - Subversion (SVN)
+      - Mercurial
+      - Fossil
+
+  - id: ci-pipeline
+    name: Continuous Integration Pipeline
+    category: digital-software
+    description: >
+      Automated build, test, and validation pipeline triggered on content
+      changes. Runs linters, schema validators, link checkers, and build steps
+      without human intervention. Acts as a quality gate before publication.
+    stage: [publishing]
+    persona: [technical-qa, publisher]
+    also_known_as: [CI/CD, automated build pipeline, doc pipeline]
+    examples:
+      - GitHub Actions
+      - GitLab CI
+      - Jenkins
+      - CircleCI
+
+  - id: schema-validator
+    name: Schema Validator
+    category: digital-software
+    description: >
+      Validates document structure, metadata, or markup against a formal schema
+      definition. Ensures structural compliance before downstream processing or
+      publication.
+    stage: [revising, editing, publishing]
+    persona: [technical-qa]
+    examples:
+      - JSON Schema validators (ajv, check-jsonschema)
+      - DITA validators
+      - Schematron
+      - xmllint
+
+  - id: ssg
+    name: Static Site Generator
+    category: digital-software
+    description: >
+      Transforms source markup (Markdown, reStructuredText, AsciiDoc) and
+      templates into a static publishable website. The primary build tool in
+      Docs-as-Code pipelines.
+    stage: [publishing]
+    persona: [publisher, technical-qa]
+    also_known_as: [SSG, doc site builder]
+    examples:
+      - MkDocs (with Material theme)
+      - Hugo
+      - Docusaurus
+      - Jekyll
+      - Quartz (for ontology/graph sites)
+
+  - id: cms
+    name: Content Management System
+    category: digital-software
+    description: >
+      System for storing, organising, and publishing documents, typically with
+      a web-based authoring interface, user roles, and workflow support.
+      Contrasts with Docs-as-Code in that content is not stored in a VCS.
+    stage: [drafting, publishing]
+    persona: [publisher, information-architect, author]
+    also_known_as: [CMS, knowledge portal]
+    examples:
+      - Confluence
+      - WordPress
+      - SharePoint
+      - Drupal
+      - Contentful (headless)
+
+  - id: ai-writing-assistant
+    name: AI Writing Assistant
+    category: digital-software
+    description: >
+      LLM-based tool for drafting, editing, summarising, rewriting, or
+      transforming prose. Can operate as an interactive assistant or as an
+      automated pipeline step.
+    stage: [prewriting, drafting, revising]
+    persona: [author, self-editor]
+    examples:
+      - Claude (Anthropic)
+      - GitHub Copilot (prose mode)
+      - Grammarly AI
+      - Jasper
+
+  - id: rag-system
+    name: Retrieval-Augmented Generation System
+    category: digital-software
+    description: >
+      System that retrieves relevant passages from a document corpus and uses
+      them to ground LLM responses. Used to query, summarise, or synthesise
+      across large document sets.
+    stage: [prewriting, drafting]
+    persona: [author, technical-qa]
+    also_known_as: [RAG, private knowledge assistant]
+    examples:
+      - Copilot Enterprise (private RAG)
+      - NotebookLM
+      - Perplexity
+      - Claude with document context
+
+  - id: search-index
+    name: Search Index
+    category: digital-software
+    description: >
+      Full-text retrieval system enabling readers to search a document corpus.
+      Built at publish time; serves queries at consumption time.
+    stage: [publishing]
+    persona: [publisher, technical-qa]
+    examples:
+      - Algolia
+      - Elasticsearch
+      - MkDocs search (lunr.js)
+      - Typesense
+
+  - id: diff-tool
+    name: Diff Tool
+    category: digital-software
+    description: >
+      Compares two text versions and surfaces additions, deletions, and
+      modifications. Used during revision, peer review, and editorial sign-off
+      to track what changed between drafts.
+    stage: [revising, peer-review, editing]
+    persona: [self-editor, structural-editor, peer-reviewer, copy-editor]
+    also_known_as: [change tracker, redline tool]
+    examples:
+      - Git diff
+      - Track Changes (Microsoft Word)
+      - Kaleidoscope
+      - Delta (terminal diff viewer)
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # CATEGORY: method-framework
+  # Structured practices, standards, and guidelines — not software, but
+  # instruments that govern how work is done
+  # ─────────────────────────────────────────────────────────────────────────────
+
+  - id: style-guide
+    name: Style Guide
+    category: method-framework
+    description: >
+      Prescriptive standards for language, formatting, citation, and
+      conventions. Defines the expected form of a document or publication.
+      May be domain-specific, organisation-specific, or discipline-wide.
+    stage: [prewriting, drafting, editing]
+    persona: [author, copy-editor, line-editor, publisher]
+    also_known_as: [house style, style manual, writing standard]
+    examples:
+      - MLA Handbook (Modern Language Association)
+      - Chicago Manual of Style
+      - AP Stylebook (journalism)
+      - Microsoft Writing Style Guide (technical)
+      - Google Developer Documentation Style Guide
+      - Oxford Style Manual
+
+  - id: information-architecture-framework
+    name: Information Architecture Framework
+    category: method-framework
+    description: >
+      Structural model for organising content into types, hierarchies,
+      and navigation patterns. Defines what kinds of documents exist and
+      how they relate to each other.
+    stage: [prewriting]
+    persona: [information-architect, structural-editor]
+    also_known_as: [IA framework, content model]
+    examples:
+      - Diataxis (tutorials / how-to guides / reference / explanation)
+      - DITA (Darwin Information Typing Architecture)
+      - Topic-based authoring
+      - MinDoc
+
+  - id: genre-framework
+    name: Genre and Audience Framework
+    category: method-framework
+    description: >
+      Methodology for analysing reader purpose, need, and expected content
+      form. Used to identify genre mismatch, missing content types, or
+      structural misalignment with audience goals.
+    stage: [prewriting]
+    persona: [information-architect, structural-editor, author]
+    also_known_as: [genre analysis, audience analysis, purpose framework]
+    examples:
+      - Jobs To Be Done (JTBD framework)
+      - Genre theory (Swales, Miller)
+      - Rhetorical situation analysis
+      - Persona-based content mapping
+
+  - id: evaluation-rubric
+    name: Evaluation Rubric
+    category: method-framework
+    description: >
+      Structured scoring criteria for assessing document quality against
+      defined dimensions. Used to standardise peer review, editorial
+      sign-off, or automated quality scoring.
+    stage: [peer-review, editing]
+    persona: [peer-reviewer, structural-editor, technical-qa]
+    also_known_as: [scoring rubric, quality checklist, assessment matrix]
+    examples:
+      - Holistic scoring rubrics (academic writing)
+      - WQO concern checklist (this ontology)
+      - ISO/IEC documentation quality standards
+      - Journal submission review forms
+
+  - id: editorial-workflow
+    name: Editorial Workflow
+    category: method-framework
+    description: >
+      Defined process model for moving content through production stages
+      with assigned roles, review gates, and handoff criteria. May be
+      formal (published policy) or informal (team convention).
+    stage: [prewriting, drafting, revising, peer-review, editing, publishing]
+    persona: [publisher, information-architect]
+    also_known_as: [content workflow, production process, editorial process]
+    examples:
+      - Traditional copy-editing workflow (author → structural → line → copy → proof)
+      - Agile documentation sprints (docs-as-code iteration)
+      - DITA review and approval workflow
+      - Academic journal submission and peer-review workflow
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # CATEGORY: physical-analog
+  # Material tools and pre-digital technologies that shaped document production
+  # conventions still reflected in digital workflows
+  # ─────────────────────────────────────────────────────────────────────────────
+
+  - id: typewriter
+    name: Typewriter
+    category: physical-analog
+    description: >
+      Mechanical or electromechanical device for composing text by striking
+      inked type characters onto paper. The dominant drafting tool for most
+      of the 20th century; its conventions (monospaced type, double-spacing,
+      em-dash as double-hyphen) persist in digital practice.
+    stage: [drafting]
+    persona: [author]
+    examples:
+      - Manual typewriter (Underwood, Olivetti, Royal)
+      - Electric typewriter (IBM Executive)
+      - IBM Selectric (with correcting ribbon)
+      - Golf-ball typewriter
+
+  - id: correction-tool
+    name: Correction Tool
+    category: physical-analog
+    description: >
+      Instrument for physically removing or covering errors on a typed or
+      handwritten manuscript. The analog predecessor of the delete key and
+      Track Changes.
+    stage: [revising]
+    persona: [author, copy-editor]
+    also_known_as: [correction fluid, white-out]
+    examples:
+      - Correction fluid (Liquid Paper, Wite-Out)
+      - Correction tape (typewriter lift-off tape)
+      - Typewriter correcting ribbon
+      - Pencil eraser
+
+  - id: typeset
+    name: Typesetting
+    category: physical-analog
+    description: >
+      Physical or mechanical composition of text for reproduction by printing.
+      The production stage between manuscript and printed page; now largely
+      replaced by digital layout tools but its vocabulary (leading, kerning,
+      gutter, folio) persists in digital publishing.
+    stage: [publishing]
+    persona: [publisher]
+    also_known_as: [composition, presswork, typographic composition]
+    examples:
+      - Moveable type (Gutenberg press, wooden and metal)
+      - Linotype machine
+      - Letterpress printing
+      - Hot metal typesetting (Monotype)
+
+  - id: paper-template
+    name: Paper Template
+    category: physical-analog
+    description: >
+      Printed form, ruled guide sheet, or structured outline for composing
+      physical documents. Provides structure before the act of writing.
+      The analog predecessor of document templates and genre-typed starter files.
+    stage: [prewriting, drafting]
+    persona: [author, information-architect]
+    also_known_as: [composition form, outline sheet, writing template]
+    examples:
+      - Outline templates (Roman numeral / alphanumeric)
+      - Storyboard sheets
+      - Ruled composition books
+      - Manuscript submission cover sheets
+      - Columnar analysis pads
+
+  - id: manuscript-markup
+    name: Manuscript Markup
+    category: physical-analog
+    description: >
+      Editorial marks applied by hand to a physical manuscript to indicate
+      revisions, corrections, or typesetter instructions. The practice
+      established the vocabulary of editorial review roles and markup
+      conventions carried forward into digital Track Changes and code review.
+    stage: [revising, peer-review, editing]
+    persona: [structural-editor, copy-editor, line-editor, peer-reviewer]
+    also_known_as: [proofreading marks, editorial markup, red-pen editing]
+    examples:
+      - Standard proofreading marks (BS 5261, Chicago Manual)
+      - Marginal annotations and queries
+      - Red-pen line editing
+      - Blue-pencil censorship marks (historical)
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # CATEGORY: platform-infrastructure
+  # Hosting, collaboration, and coordination environments that shape how
+  # document production work is organised and distributed
+  # ─────────────────────────────────────────────────────────────────────────────
+
+  - id: hosting-platform
+    name: Hosting Platform
+    category: platform-infrastructure
+    description: >
+      Environment where completed documents are stored and served to readers.
+      Determines availability, access control, and the technical form of
+      the published output.
+    stage: [publishing]
+    persona: [publisher, technical-qa]
+    also_known_as: [doc host, publishing host, web host]
+    examples:
+      - GitHub Pages
+      - Netlify
+      - Cloudflare Pages
+      - Moveable Type (early blog/CMS hosting)
+      - Confluence (as intranet host)
+
+  - id: collaboration-platform
+    name: Collaboration Platform
+    category: platform-infrastructure
+    description: >
+      Shared environment for simultaneous or asynchronous co-authoring,
+      commenting, and review. Provides presence awareness, inline commenting,
+      and change history without requiring VCS knowledge.
+    stage: [drafting, revising, peer-review]
+    persona: [author, peer-reviewer, structural-editor, copy-editor]
+    examples:
+      - Google Docs
+      - Microsoft SharePoint / OneDrive
+      - Notion
+      - Overleaf (collaborative LaTeX)
+      - Dropbox Paper
+
+  - id: project-management
+    name: Project Management Tool
+    category: platform-infrastructure
+    description: >
+      Task and workflow tracking for coordinating document production across
+      contributors, stages, and deadlines. Connects editorial work to broader
+      team planning and delivery.
+    stage: [prewriting, drafting, revising, editing, publishing]
+    persona: [publisher, information-architect]
+    examples:
+      - Jira
+      - Linear
+      - GitHub Issues
+      - Trello
+      - Basecamp
+
+  - id: social-code-platform
+    name: Social Code Platform
+    category: platform-infrastructure
+    description: >
+      Distributed VCS host with layered collaboration features: pull request
+      review, inline commenting, CI integration, issue tracking, and access
+      control. In Docs-as-Code workflows, this is the primary peer-review
+      and governance surface.
+    stage: [revising, peer-review, publishing]
+    persona: [author, technical-qa, publisher, peer-reviewer]
+    also_known_as: [code forge, VCS host, Git hosting]
+    notes: >
+      Represents the convergence of VCS (version control), CI pipeline (automated
+      validation), project management (issues), and peer review (pull requests)
+      into a single platform. Git + CI + project tracking + social review is the
+      characteristic Docs-as-Code stack.
+    examples:
+      - GitHub (most common for public Docs-as-Code)
+      - GitLab (self-hosted option)
+      - Bitbucket (Atlassian ecosystem)

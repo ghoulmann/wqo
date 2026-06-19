@@ -1,0 +1,46 @@
+title: Glossaries & Glosses
+description: A collection of defined technical terms, jargon, and acronyms used in
+  the text.
+also_known_as:
+- terminology
+- jargon definition
+- acronym expansion
+- term glossary
+- definitions
+wordnet:
+  term: glossary
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale: document-level
+  concern_type: architectural
+  evaluator:
+  - automated
+  - human-line-editor
+  determinism: risk-factor
+  writing_stage:
+  - drafting
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: drafting
+  impact:
+  - reader-comprehension
+  - accessibility
+  risk_severity: functional
+  responsible_role:
+  - author
+  - technical-qa
+relationships: {}
+diagnostic_question: Are all technical acronyms and domain-specific terms defined
+  on first use or linked to a glossary?
+evaluation_tools:
+- terminology.py
+- Vale Terminology.yml
+- acronym scanner

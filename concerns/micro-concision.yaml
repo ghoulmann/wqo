@@ -1,0 +1,49 @@
+title: Concision
+description: The practice of eliminating verbal bloat, filler words, and unnecessary
+  syllables.
+also_known_as:
+- wordiness
+- verbal bloat
+- filler words
+- redundancy
+- tightening prose
+wordnet:
+  term: concision
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: mechanical
+  stage: post-compositional
+  scale:
+  - word-level
+  - sentence-level
+  concern_type:
+  - grammatical
+  - stylistic
+  evaluator:
+  - automated
+  - human-line-editor
+  determinism: risk-factor
+  writing_stage:
+  - editing
+  - publishing
+  address_when: editing
+  impact:
+  - reader-comprehension
+  - rag-retrieval
+  risk_severity: functional
+  responsible_role:
+  - self-editor
+  - line-editor
+  - ai-tool
+  audience_sensitivity:
+  - second-language-learner
+  - cognitive-disability
+relationships: {}
+diagnostic_question: Has every filler word ('just', 'actually', 'really', 'in order
+  to') been eliminated?
+evaluation_tools:
+- sentence_rhythm.py
+- Hemingway App
+- Vale TrivializingLanguage

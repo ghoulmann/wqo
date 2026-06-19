@@ -1,0 +1,44 @@
+title: Annotations & Footnotes
+description: Explanatory notes or source citations appended to the margins or bottom
+  of pages.
+also_known_as:
+- citations
+- footnotes
+- references
+- bibliography
+- endnotes
+wordnet:
+  term: annotations
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale: document-level
+  concern_type: architectural
+  evaluator:
+  - human-rhetorician
+  - human-line-editor
+  determinism: risk-factor
+  writing_stage:
+  - peer-review
+  - editing
+  - publishing
+  address_when: peer-review
+  impact:
+  - author-credibility
+  - reader-trust
+  - legal-compliance
+  risk_severity: credibility
+  responsible_role:
+  - author
+  - peer-reviewer
+relationships: {}
+diagnostic_question: Are all external claims, data, and direct quotes properly cited
+  in a consistent format?
+evaluation_tools:
+- citation linter
+- manual review

@@ -1,0 +1,49 @@
+title: Cohesion
+description: The lexical and grammatical transitions that glue sentences together
+  smoothly.
+also_known_as:
+- sentence flow
+- transitions
+- lexical chains
+- sentence-level connectivity
+wordnet:
+  term: cohesion
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale:
+  - sentence-level
+  - paragraph-level
+  concern_type: logical
+  evaluator:
+  - automated
+  - human-line-editor
+  determinism: risk-factor
+  writing_stage:
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: revising
+  impact:
+  - reader-comprehension
+  - rag-retrieval
+  risk_severity: functional
+  responsible_role:
+  - self-editor
+  - line-editor
+  - ai-tool
+  audience_sensitivity:
+  - second-language-learner
+  - cognitive-disability
+relationships: {}
+diagnostic_question: Do adjacent sentences connect smoothly through lexical chains,
+  pronouns, or explicit transitions?
+evaluation_tools:
+- cohesion.py
+- manual review

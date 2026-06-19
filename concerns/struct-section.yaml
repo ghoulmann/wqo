@@ -1,0 +1,46 @@
+title: Section
+description: A larger cluster of ideas defined by structural headers (H2, H3) that
+  maintains thematic unity.
+also_known_as:
+- heading hierarchy
+- section structure
+- document outline
+- heading levels
+wordnet:
+  term: section
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale: document-level
+  concern_type: architectural
+  evaluator:
+  - automated
+  - human-information-architect
+  determinism: risk-factor
+  writing_stage:
+  - drafting
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: drafting
+  impact:
+  - reader-comprehension
+  - rag-retrieval
+  - seo-discoverability
+  risk_severity: functional
+  responsible_role:
+  - author
+  - information-architect
+relationships: {}
+diagnostic_question: Do all sections have clear, descriptive headings and maintain
+  thematic unity within their scope?
+evaluation_tools:
+- headings.py
+- markdownlint MD001/MD041
+- outline review

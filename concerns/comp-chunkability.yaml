@@ -1,0 +1,47 @@
+title: Chunkability
+description: Segmenting long-form content into discrete chunks optimized for vector
+  database indexing (RAG).
+also_known_as:
+- RAG chunking
+- semantic splits
+- context segmentation
+- vector indexing
+wordnet:
+  term: chunkability
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: computational
+  stage:
+  - compositional
+  - post-compositional
+  scale:
+  - paragraph-level
+  - document-level
+  concern_type: computational
+  evaluator:
+  - automated
+  - human-information-architect
+  determinism: risk-factor
+  writing_stage:
+  - drafting
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: drafting
+  impact:
+  - rag-retrieval
+  - reader-comprehension
+  risk_severity: functional
+  responsible_role:
+  - author
+  - information-architect
+relationships: {}
+diagnostic_question: Does each H2/H3 section form a self-contained semantic unit of
+  300-500 words?
+evaluation_tools:
+- word-count-per-section
+- RAG chunk analyzer
+- chunk.py (planned)

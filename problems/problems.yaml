@@ -1,0 +1,1639 @@
+problems:
+- id: P-01
+  title: Documentation Drift (Code Ahead of Docs)
+  problem_statement: Codebases evolve rapidly through automated CI/CD cycles while technical reference documents remain static,
+    creating systematic divergence between active software behavior and published guidance.
+  causal_mechanism: Process Myopia — software development is decoupled from knowledge externalization; documentation is treated
+    as a post-release deliverable rather than a design-time dependency.
+  domain_category: documentation-drift
+  system_boundary: versioning
+  impact:
+  - rag-retrieval
+  - reader-comprehension
+  - reader-trust
+  risk_severity: credibility
+  resolution_pattern: ci-gate
+  wqo_links:
+  - code-doc-drift
+  - temporal-accuracy
+  project_links:
+  - &id001
+    name: rhetor-linter
+    path: /home/rik/Documents/github/rhetor-linter/
+    relationship: detects
+  - &id003
+    name: jtbd-tool
+    path: /home/rik/Documents/github/jtbd-tool/
+    relationship: detects
+  - &id002
+    name: wqo
+    path: /home/rik/Documents/github/wqo/
+    relationship: governs
+- id: P-02
+  title: Wikis Physically Decoupled from VCS
+  problem_statement: Centralized collaborative wikis are stored in environments entirely isolated from version-controlled
+    codebase trees, with no automated mechanism to detect when a code commit violates a wiki-based architectural diagram.
+  causal_mechanism: Lack of automated validation gates linking VCS commit events to downstream documentation assets.
+  domain_category: documentation-drift
+  system_boundary: versioning
+  impact:
+  - rag-retrieval
+  - reader-trust
+  risk_severity: credibility
+  resolution_pattern: ci-gate
+  wqo_links:
+  - code-doc-drift
+  - temporal-accuracy
+  project_links:
+  - *id001
+  - *id002
+- id: P-03
+  title: Unrecorded Local System Infrastructure
+  problem_statement: Complex containerization, network virtualizations, and host dependencies remain undocumented in critical
+    project repositories, surviving only as tacit knowledge held by individual developers.
+  causal_mechanism: Over-reliance on individual developer tacit knowledge without structured capture during early engineering
+    phases.
+  domain_category: documentation-drift
+  system_boundary: authoring
+  impact:
+  - reader-comprehension
+  - rag-retrieval
+  risk_severity: functional
+  resolution_pattern: authoring-protocol
+  wqo_links:
+  - structural-completeness
+  project_links:
+  - *id002
+- id: P-04
+  title: Infrastructure Block Disparity
+  problem_statement: Documentation references one cloud service while active IaC configurations deploy a completely different
+    architecture, with no notification hooks alerting content systems to silent infrastructure migrations.
+  causal_mechanism: Silent migrations of cloud infrastructure templates without downstream notification hooks for content
+    systems.
+  domain_category: documentation-drift
+  system_boundary: build-publish
+  impact:
+  - reader-comprehension
+  - reader-trust
+  - rag-retrieval
+  risk_severity: credibility
+  resolution_pattern: ci-gate
+  wqo_links:
+  - code-doc-drift
+  - temporal-accuracy
+  project_links:
+  - *id001
+  - *id002
+- id: P-05
+  title: Outdated Dependency Management Instruction
+  problem_statement: Getting Started files and onboarding runbooks list instructions for packages whose names, versions, or
+    installation commands have changed in the active codebase.
+  causal_mechanism: Lack of continuous build-time extraction of project dependency schemas (package.json, Cargo.toml) into
+    documentation.
+  domain_category: documentation-drift
+  system_boundary: authoring
+  impact:
+  - reader-comprehension
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links:
+  - temporal-accuracy
+  project_links:
+  - *id002
+- id: P-06
+  title: Visual Regression / Screenshot Drift
+  problem_statement: Embedded user-interface screenshots quickly drift from the production UI state as front-end components
+    are updated, degrading instructional accuracy for visual learners.
+  causal_mechanism: Traditional visual testing tools fail to validate imagery when slight CSS, padding, or typography modifications
+    occur.
+  domain_category: documentation-drift
+  system_boundary: build-publish
+  impact:
+  - reader-comprehension
+  - accessibility-presentation
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links:
+  - temporal-accuracy
+  project_links:
+  - *id002
+- id: P-07
+  title: How-To Guides Devolving into Explanations
+  problem_statement: Task-focused guides accumulate theoretical background, blurring the functional distinction between procedural
+    guidance and conceptual explanation.
+  causal_mechanism: Purpose Drift — authors append conceptual background to quick-reference guides without editorial filters
+    enforcing Diataxis genre boundaries.
+  domain_category: documentation-drift
+  system_boundary: authoring
+  impact:
+  - reader-comprehension
+  - rag-retrieval
+  - cognitive-overload
+  risk_severity: functional
+  resolution_pattern: genre-enforcement
+  wqo_links:
+  - diataxis-genre
+  - structural-coherence
+  project_links:
+  - *id003
+  - &id004
+    name: editorial-concerns-tool
+    path: /home/rik/Documents/github/knowledge-management/webs/ideation/tool/
+    relationship: addresses
+  - *id002
+- id: P-08
+  title: Tutorials Mutating into Reference Manuals
+  problem_statement: Learning-oriented tutorials gradually accumulate configuration details, losing their step-by-step learning
+    arc and failing both beginners and advanced engineers.
+  causal_mechanism: Attempting to satisfy beginner and advanced audiences inside a single unstructured document without genre
+    enforcement.
+  domain_category: documentation-drift
+  system_boundary: authoring
+  impact:
+  - reader-comprehension
+  - cognitive-overload
+  risk_severity: functional
+  resolution_pattern: genre-enforcement
+  wqo_links:
+  - diataxis-genre
+  - structural-coherence
+  project_links:
+  - *id003
+  - *id004
+  - *id002
+- id: P-09
+  title: Orphaned Reference Material (No Onramp)
+  problem_statement: Exhaustive API and schema specifications exist without a single procedural guide explaining how to integrate
+    them, leaving software assets underutilized despite high technical readiness.
+  causal_mechanism: Isolating automated reference generation tools from the user-onboarding design lifecycle.
+  domain_category: documentation-drift
+  system_boundary: authoring
+  impact:
+  - reader-comprehension
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: content-audit
+  wqo_links:
+  - diataxis-genre
+  - structural-completeness
+  project_links:
+  - *id003
+  - *id002
+- id: P-10
+  title: Runnable Sample Apps Diverging from Docs
+  problem_statement: Sample application codebases evolve to resolve bugs, but the code snippets in manual guides are left
+    un-synchronized, causing copy-paste failures.
+  causal_mechanism: Maintenance of sample code inside static Markdown files rather than importing code from actual runnable
+    files via code-block hooks.
+  domain_category: documentation-drift
+  system_boundary: versioning
+  impact:
+  - reader-trust
+  - reader-comprehension
+  risk_severity: credibility
+  resolution_pattern: ci-gate
+  wqo_links:
+  - code-doc-drift
+  - temporal-accuracy
+  project_links:
+  - *id001
+  - *id002
+- id: P-11
+  title: Undocumented Feature Deprecations
+  problem_statement: API endpoints and configurations are retired in software versions without clear warning banners in the
+    active knowledge base, causing engineers to act on deprecated paths.
+  causal_mechanism: Poorly integrated release processes that omit documentation updates from the definition of done.
+  domain_category: documentation-drift
+  system_boundary: versioning
+  impact:
+  - reader-trust
+  - legal-compliance
+  risk_severity: credibility
+  resolution_pattern: ownership-protocol
+  wqo_links:
+  - temporal-accuracy
+  project_links:
+  - *id002
+- id: P-12
+  title: Delayed Documentation Availability
+  problem_statement: Documentation is published weeks after a production release rather than launching concurrently, suppressing
+    feature adoption during the critical launch window.
+  causal_mechanism: Technical writing activities are treated as a reactive post-release task rather than a proactive engineering
+    design dependency.
+  domain_category: documentation-drift
+  system_boundary: governance
+  impact:
+  - reader-trust
+  - seo-discoverability
+  risk_severity: functional
+  resolution_pattern: process-gate
+  wqo_links:
+  - temporal-accuracy
+  project_links:
+  - *id002
+- id: P-13
+  title: Stale "Zombie" Technical Content
+  problem_statement: Legacy manuals remain highly visible in developer search engines without verified timestamps or version
+    compatibility flags, creating security and compliance risk.
+  causal_mechanism: Lack of scheduled, automated metadata expiration checks on static documentation assets.
+  domain_category: documentation-drift
+  system_boundary: governance
+  impact:
+  - reader-trust
+  - legal-compliance
+  - rag-retrieval
+  risk_severity: safety
+  resolution_pattern: metadata-expiry
+  wqo_links:
+  - temporal-accuracy
+  project_links:
+  - *id002
+- id: P-14
+  title: AI Adoption Atop Corrupted Content Debt
+  problem_statement: Organizations ingest outdated, fragmented, and contradictory document corpora into enterprise RAG systems
+    before executing any structured cleanup, producing hallucinated outputs.
+  causal_mechanism: Rushing to deploy Generative AI assistants without first executing a programmatic cleanup of the underlying
+    knowledge base.
+  domain_category: documentation-drift
+  system_boundary: consumption
+  impact:
+  - rag-retrieval
+  - reader-trust
+  - reader-comprehension
+  risk_severity: safety
+  resolution_pattern: content-audit
+  wqo_links:
+  - rag-retrieval
+  - semantic-density
+  - temporal-accuracy
+  project_links:
+  - *id001
+  - *id003
+  - *id004
+  - *id002
+- id: P-15
+  title: Linters Limited to Syntax Verification
+  problem_statement: Markdown linters check spelling and formatting syntax but cannot evaluate flow, unity, or semantic coherence,
+    producing technically valid documents that are cognitively dense and prone to RAG mis-indexing.
+  causal_mechanism: Traditional linters rely on static regex rules that lack semantic or rhetorical comprehension of natural
+    language.
+  domain_category: quality-defects
+  system_boundary: consumption
+  impact:
+  - reader-comprehension
+  - rag-retrieval
+  risk_severity: functional
+  resolution_pattern: semantic-linting
+  wqo_links:
+  - coherence
+  - unity
+  - cohesion
+  project_links:
+  - *id001
+  - *id004
+  - *id002
+- id: P-16
+  title: Misaligned Topic Sentence Scoring
+  problem_statement: Heuristic flow scoring models assume the first sentence of a paragraph is always the topic sentence,
+    yielding false negatives when authors place the thesis mid-paragraph or at the end.
+  causal_mechanism: Natural variance in human rhetorical patterns not accounted for by position-based heuristics.
+  domain_category: quality-defects
+  system_boundary: consumption
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: semantic-linting
+  wqo_links:
+  - coherence
+  - unity
+  project_links:
+  - *id001
+  - *id004
+  - *id002
+- id: P-17
+  title: Heading-to-Content Coherence Gaps
+  problem_statement: Section headings promise one topic while the underlying paragraph body drifts into unrelated technical
+    areas, fragmenting search precision and confusing navigation.
+  causal_mechanism: Rapid editorial changes where content is appended to sections without validating alignment with the overarching
+    heading structure.
+  domain_category: quality-defects
+  system_boundary: authoring
+  impact:
+  - reader-comprehension
+  - seo-discoverability
+  - rag-retrieval
+  risk_severity: functional
+  resolution_pattern: semantic-linting
+  wqo_links:
+  - coherence
+  - structural-coherence
+  - heading-clarity
+  project_links:
+  - *id001
+  - *id004
+  - *id002
+- id: P-18
+  title: Topic Sentence Conceptual Drift
+  problem_statement: A paragraph's introductory sentence introduces concepts that the remaining supporting sentences fail
+    to develop, causing cognitive overload and noisy vector embeddings.
+  causal_mechanism: Authors overload introductory prose with secondary themes, failing to maintain single-idea paragraphs.
+  domain_category: quality-defects
+  system_boundary: authoring
+  impact:
+  - reader-comprehension
+  - cognitive-overload
+  - rag-retrieval
+  risk_severity: functional
+  resolution_pattern: semantic-linting
+  wqo_links:
+  - unity
+  - coherence
+  project_links:
+  - *id001
+  - *id004
+  - *id002
+- id: P-19
+  title: Excessive Sentence and Phrase Length
+  problem_statement: Complex technical sentences exceed 45–60 words, dense with propositional clauses and nested variables,
+    degrading reading speed and increasing error rates on critical setup steps.
+  causal_mechanism: Lack of readability gates within the CI/CD pipeline or developer IDE to flag syntactic run-ons.
+  domain_category: quality-defects
+  system_boundary: authoring
+  impact:
+  - reader-comprehension
+  - cognitive-overload
+  - accessibility-cognitive
+  risk_severity: functional
+  resolution_pattern: semantic-linting
+  wqo_links:
+  - sentence-length
+  - readability
+  project_links:
+  - *id001
+  - *id004
+  - *id002
+- id: P-20
+  title: Discourse Cohesion Breaks
+  problem_statement: Adjacent technical sentences lack semantic links or transitional bridges, forcing readers to infer implicit
+    logical connections and increasing mental fatigue.
+  causal_mechanism: Fragmented, multi-author edits where blocks of text are inserted without refactoring surrounding prose.
+  domain_category: quality-defects
+  system_boundary: authoring
+  impact:
+  - reader-comprehension
+  - cognitive-overload
+  risk_severity: functional
+  resolution_pattern: semantic-linting
+  wqo_links:
+  - cohesion
+  - coherence
+  project_links:
+  - *id001
+  - *id004
+  - *id002
+- id: P-21
+  title: Ambiguous Standalone Headings
+  problem_statement: Headings use generic nouns or abstract terms without sufficient context, failing to state the underlying
+    concept or task and degrading Table of Contents navigability.
+  causal_mechanism: Neglecting to use explicit, action-oriented heading verbs or qualified noun phrases.
+  domain_category: quality-defects
+  system_boundary: authoring
+  impact:
+  - reader-comprehension
+  - seo-discoverability
+  risk_severity: functional
+  resolution_pattern: semantic-linting
+  wqo_links:
+  - heading-clarity
+  - signposting
+  project_links:
+  - *id001
+  - *id004
+  - *id002
+- id: P-22
+  title: Unsupported Engineering Claims
+  problem_statement: Technical documents list sweeping performance assertions without citing baseline telemetry or metrics,
+    eroding credibility among senior engineering audiences and introducing audit concerns.
+  causal_mechanism: Content creators adopt marketing-heavy rhetoric rather than maintaining the objective rigor of systems
+    engineering documentation.
+  domain_category: quality-defects
+  system_boundary: authoring
+  impact:
+  - reader-trust
+  - author-credibility
+  - legal-compliance
+  risk_severity: credibility
+  resolution_pattern: editorial-review
+  wqo_links:
+  - unsupported-claims
+  - false-balance
+  project_links:
+  - *id001
+  - *id004
+  - *id002
+- id: P-23
+  title: Missing Technical Trade-off Analysis
+  problem_statement: Manuals promote single pathways without outlining the risks, resource requirements, or architectural
+    counter-arguments, leading engineers to make poor design decisions.
+  causal_mechanism: Documentation is designed as promotional collateral rather than a balanced, authoritative technical reference.
+  domain_category: quality-defects
+  system_boundary: authoring
+  impact:
+  - reader-trust
+  - author-credibility
+  risk_severity: credibility
+  resolution_pattern: editorial-review
+  wqo_links:
+  - false-balance
+  - unsupported-claims
+  project_links:
+  - *id004
+  - *id002
+- id: P-24
+  title: Un-runnable copy-paste code blocks
+  problem_statement: Code blocks contain missing placeholders, local environment variables, or outdated syntax that fail to
+    execute in production, increasing support desk traffic.
+  causal_mechanism: Absence of automated, build-time compilation checks on code blocks embedded within Markdown documentation.
+  domain_category: quality-defects
+  system_boundary: build-publish
+  impact:
+  - reader-trust
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links:
+  - code-doc-drift
+  project_links:
+  - *id002
+- id: P-25
+  title: Manual Link Validation Overhead
+  problem_statement: Quality assurance reviews rely on human eyes to identify dead links and broken redirects across thousands
+    of static pages, allowing high numbers of broken links to escape to production.
+  causal_mechanism: Documentation platforms operate without automated E2E link checking natively integrated into the PR check
+    lifecycle.
+  domain_category: quality-defects
+  system_boundary: build-publish
+  impact:
+  - reader-comprehension
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links:
+  - rendering
+  project_links:
+  - *id002
+- id: P-26
+  title: FAQ-Centric Information Architecture
+  problem_statement: Organizations rely on long, unstructured FAQ sheets as the primary navigation and support pathway, trapping
+    information in chronologically ordered lists that are difficult to search or maintain.
+  causal_mechanism: Systemic failure to refactor ad-hoc user resolutions into structured, Diataxis-aligned directories.
+  domain_category: quality-defects
+  system_boundary: authoring
+  impact:
+  - reader-comprehension
+  - seo-discoverability
+  - rag-retrieval
+  risk_severity: functional
+  resolution_pattern: genre-enforcement
+  wqo_links:
+  - diataxis-genre
+  - faq-antipattern
+  - structural-coherence
+  project_links:
+  - *id003
+  - *id004
+  - *id002
+- id: P-27
+  title: Unmeasured "Time to Hello World" (TTHW)
+  problem_statement: Developer platforms measure documentation quality by word counts or page views instead of developer onboarding
+    velocity, preventing identification of why tools fail to gain adoption.
+  causal_mechanism: Metrics strategies are disconnected from the actual developer onboarding experience and time-to-first-success
+    measurements.
+  domain_category: quality-defects
+  system_boundary: governance
+  impact:
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: metrics-protocol
+  wqo_links:
+  - readability
+  project_links:
+  - *id002
+- id: P-28
+  title: Document Structural-Genre Mismatches
+  problem_statement: Documents published as research or postmortems lack the necessary semantic divisions, omitting crucial
+    data such as corrective action owners or root-cause analyses.
+  causal_mechanism: Authors write unstructured free-text documents without using structured templates enforced by automated
+    linting pipelines.
+  domain_category: quality-defects
+  system_boundary: authoring
+  impact:
+  - reader-comprehension
+  - legal-compliance
+  risk_severity: functional
+  resolution_pattern: genre-enforcement
+  wqo_links:
+  - diataxis-genre
+  - structural-completeness
+  project_links:
+  - *id003
+  - *id004
+  - *id002
+- id: P-29
+  title: RAG Semantic Ambiguity (Unstructured Corpus)
+  problem_statement: Legacy technical content lacks explicit semantic boundaries, structured taxonomy, and metadata blocks,
+    causing AI coding assistants and RAG systems to return highly inaccurate context.
+  causal_mechanism: Building documentation systems exclusively for human visual layout without planning for structured machine
+    consumption.
+  domain_category: quality-defects
+  system_boundary: consumption
+  impact:
+  - rag-retrieval
+  - reader-trust
+  risk_severity: credibility
+  resolution_pattern: content-audit
+  wqo_links:
+  - rag-retrieval
+  - semantic-density
+  - structural-coherence
+  project_links:
+  - *id001
+  - *id003
+  - *id004
+  - *id002
+- id: P-30
+  title: Navigation Schema Incompatibility
+  problem_statement: Migrating between static site generators with fundamentally different navigation schema formats causes
+    orphaned pages, broken cross-links, and disrupted developer navigation.
+  causal_mechanism: Fundamental syntax differences between the front-end layout engines of distinct SSGs with no automated
+    conversion tooling.
+  domain_category: migration
+  system_boundary: build-publish
+  impact:
+  - reader-comprehension
+  - seo-discoverability
+  risk_severity: functional
+  resolution_pattern: migration-tooling
+  wqo_links:
+  - rendering
+  project_links:
+  - *id002
+- id: P-31
+  title: MDX Component Bloat
+  problem_statement: React/JSX components embedded inside legacy .mdx files break compile pipelines on standard Markdown engines,
+    blocking platform migration.
+  causal_mechanism: Over-reliance on proprietary, UI-specific React components rather than maintaining a clean, portable Markdown
+    core.
+  domain_category: migration
+  system_boundary: build-publish
+  impact:
+  - rendering
+  risk_severity: functional
+  resolution_pattern: migration-tooling
+  wqo_links:
+  - rendering
+  project_links:
+  - *id002
+- id: P-32
+  title: Broken Static Asset Paths
+  problem_statement: Legacy document repositories store imagery and attachments in relative paths that break when files are
+    restructured, launching pages with broken image icons.
+  causal_mechanism: Relocating files across directory structures without a deterministic system to parse and rewrite associated
+    relative asset links.
+  domain_category: migration
+  system_boundary: build-publish
+  impact:
+  - rendering
+  - accessibility-presentation
+  risk_severity: functional
+  resolution_pattern: migration-tooling
+  wqo_links:
+  - rendering
+  project_links:
+  - *id002
+- id: P-33
+  title: Un-Standardized Repository Layouts
+  problem_statement: Different software teams store documentation in arbitrary directory structures with unique formatting
+    rules, preventing programmatic inventory systems and migration pipelines from scaling.
+  causal_mechanism: Absence of a unified, enterprise-wide Docs-as-Code layout policy enforced at the source repository level.
+  domain_category: migration
+  system_boundary: versioning
+  impact:
+  - rag-retrieval
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: governance-standard
+  wqo_links:
+  - structural-coherence
+  project_links:
+  - *id002
+- id: P-34
+  title: Static Image Duplication Overhead
+  problem_statement: Splitting a monolithic wiki into micro-repositories forces teams to physically duplicate identical image
+    assets, creating ballooning repository sizes and severe maintenance debt.
+  causal_mechanism: Absence of an enterprise-level, secure CDN or shared asset registry for technical documentation imagery.
+  domain_category: migration
+  system_boundary: infrastructure
+  impact:
+  - rendering
+  risk_severity: cosmetic
+  resolution_pattern: asset-registry
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-35
+  title: Lack of Out-of-the-Box SSG Migrators
+  problem_statement: No commercial or open-source software reliably translates between major static site generator installations,
+    forcing organizations to spend massive engineering hours on custom manual conversions.
+  causal_mechanism: Fast development of proprietary features in custom documentation platforms, outpacing standard open-source
+    tooling.
+  domain_category: migration
+  system_boundary: build-publish
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: migration-tooling
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-36
+  title: High Initial Engineering Barrier to Migration
+  problem_statement: Upgrading knowledge infrastructure requires upfront software engineering allocation, but executive stakeholders
+    view documentation as a non-technical editing task, leaving legacy platforms in production.
+  causal_mechanism: Failure to frame documentation infrastructure as a software engineering dependency with measurable ROI.
+  domain_category: migration
+  system_boundary: governance
+  impact:
+  - reader-trust
+  - legal-compliance
+  risk_severity: functional
+  resolution_pattern: executive-case
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-37
+  title: Silent Navigation Compilation Failures
+  problem_statement: Migration pipelines generate corrupted schemas that build without errors but silently drop navigation
+    links in production, making large portions of the corpus completely unfindable.
+  causal_mechanism: Inadequate validation mechanisms that fail to verify built navigation states against the original source
+    map.
+  domain_category: migration
+  system_boundary: build-publish
+  impact:
+  - reader-comprehension
+  - seo-discoverability
+  risk_severity: credibility
+  resolution_pattern: ci-gate
+  wqo_links:
+  - rendering
+  project_links:
+  - *id002
+- id: P-38
+  title: The "Ghost Owner" Governance Gap
+  problem_statement: SMEs and developers leave the organization, leaving critical technical manuals without any accountable
+    maintainer, causing content to fall behind active software features.
+  causal_mechanism: Absence of automated, directory-integrated ownership verification linked to active HR directory systems.
+  domain_category: governance
+  system_boundary: governance
+  impact:
+  - reader-trust
+  - legal-compliance
+  risk_severity: credibility
+  resolution_pattern: ownership-protocol
+  wqo_links:
+  - temporal-accuracy
+  project_links:
+  - name: dateline
+    path: /home/rik/Documents/github/dateline/
+    relationship: detects
+  - *id002
+- id: P-39
+  title: Source of Truth Conflicts (VCS vs. Portal)
+  problem_statement: Documentation metadata edited directly in a web UI conflicts with metadata stored in the source Git repository,
+    causing codebase changes to silently overwrite UI edits.
+  causal_mechanism: Lack of a bi-directional synchronization and lock protocol between the documentation publishing UI and
+    the source VCS.
+  domain_category: governance
+  system_boundary: versioning
+  impact:
+  - reader-trust
+  risk_severity: credibility
+  resolution_pattern: sync-protocol
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-40
+  title: Team-Wide Notification Fatigue
+  problem_statement: Automated governance and review triggers generate constant, generic email alerts to developer team aliases,
+    causing developers to filter alerts to trash and ignore critical compliance warnings.
+  causal_mechanism: Naive alerting scripts that notify broad distributions rather than targeting active code owners of specific
+    sub-files.
+  domain_category: governance
+  system_boundary: governance
+  impact:
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: targeted-alerting
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-41
+  title: The "Rubber Stamp" Recertification Risk
+  problem_statement: SMEs reset document expiration timers via one-click approvals without conducting actual verification
+    audits, allowing stale documentation to be certified as accurate.
+  causal_mechanism: Verification forms lack mandatory validation gates requiring a summary of active codebase changes.
+  domain_category: governance
+  system_boundary: governance
+  impact:
+  - reader-trust
+  - legal-compliance
+  risk_severity: credibility
+  resolution_pattern: audit-gate
+  wqo_links:
+  - temporal-accuracy
+  project_links:
+  - *id002
+- id: P-42
+  title: Multi-Entity Documentation Ownership Gaps
+  problem_statement: A single, highly visible technical standard has shared relevance across multiple platform engineering
+    teams, but traditional catalog schemas support only single-owner fields, causing uncoordinated edits.
+  causal_mechanism: Traditional catalog schemas fail to represent matrixed, cross-team accountability.
+  domain_category: governance
+  system_boundary: governance
+  impact:
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: ownership-protocol
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-43
+  title: Isolated Automation Gems (No Scale Plan)
+  problem_statement: Individual developers build custom scripts to automate documentation tasks, but these remain locked in
+    personal codebases, resulting in massive duplication of engineering effort across the enterprise.
+  causal_mechanism: Absence of a centralized, managed storefront or CLI distribution hub for technical writing automation
+    assets.
+  domain_category: governance
+  system_boundary: governance
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: asset-registry
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-44
+  title: Undocumented Portal Pain Points
+  problem_statement: Technical writing teams operate custom doc websites without structured error tracking or user-behavior
+    analytics, remaining blind to broken user navigation on high-traffic pages.
+  causal_mechanism: Treating knowledge portals as simple static servers rather than complex software systems needing active
+    APM telemetry.
+  domain_category: governance
+  system_boundary: consumption
+  impact:
+  - reader-comprehension
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: observability
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-45
+  title: Deferred Governance Proposals
+  problem_statement: Highly valuable plans to establish documentation compliance standards are repeatedly deferred by platform
+    leadership when framed as subjective writing improvements rather than quantitative risk mitigation.
+  causal_mechanism: Proposals lack quantitative, risk-mitigating engineering cases with measurable ROI.
+  domain_category: governance
+  system_boundary: governance
+  impact:
+  - reader-trust
+  - legal-compliance
+  risk_severity: credibility
+  resolution_pattern: executive-case
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-46
+  title: Build-Time Governance Limitations
+  problem_statement: Strict security policies force documentation platforms to operate without external runtime database dependencies,
+    preventing real-time event-driven user feedback and dynamic ownership re-certification.
+  causal_mechanism: Architectural constraints mandate that all metadata checks execute solely during static builds.
+  domain_category: governance
+  system_boundary: build-publish
+  impact:
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: architecture-constraint
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-47
+  title: Silent Validation Logic Regression (Code Bug)
+  problem_statement: An automated visual validator regresses to a basic file-existence check, bypassing visual layout verification,
+    allowing layout breaks and missing images to escape to production despite a green build status.
+  causal_mechanism: Structural code edits silently remove or comment out visual verification logic without failing the integration
+    test suite.
+  domain_category: tool-defects
+  system_boundary: build-publish
+  impact:
+  - rendering
+  - reader-trust
+  risk_severity: credibility
+  resolution_pattern: test-coverage
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-48
+  title: Linguistic Classifier Dead Code (Code Bug)
+  problem_statement: A critical semantic classification helper function is defined but never executed in the primary classification
+    loop, increasing package size and creating maintenance confusion.
+  causal_mechanism: Legacy code refactoring leaves unused utility imports on disk without auditing execution paths.
+  domain_category: tool-defects
+  system_boundary: build-publish
+  impact:
+  - reader-comprehension
+  risk_severity: cosmetic
+  resolution_pattern: code-audit
+  wqo_links: []
+  project_links:
+  - *id001
+  - *id002
+- id: P-49
+  title: ML Classifier "Cold Start" (Code Bug)
+  problem_statement: A local machine learning classifier retrains its regression models from scratch on every single execution
+    run, creating excessive latency during Git pre-commit hooks and driving developers to disable quality validation.
+  causal_mechanism: Missing serialization and persistence logic for the trained ML model state.
+  domain_category: tool-defects
+  system_boundary: build-publish
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: model-persistence
+  wqo_links: []
+  project_links:
+  - *id001
+  - *id002
+- id: P-50
+  title: MIME-Type Failures on Direct Downloads
+  problem_statement: Automated scripts fetching documentation from external sources pull raw HTML wrappers instead of clean
+    Markdown because fetch requests hit authentication redirect gates without checking content-type headers.
+  causal_mechanism: Fetch requests lack content-type header validation and authentication pre-flight checks.
+  domain_category: tool-defects
+  system_boundary: build-publish
+  impact:
+  - rendering
+  - rag-retrieval
+  risk_severity: functional
+  resolution_pattern: content-type-check
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-51
+  title: Unparseable Complex HTML Tables
+  problem_statement: Legacy documentation relies on nested, complex HTML tables that cause Markdown parsers to generate broken
+    layouts, rendering important parameters and configuration matrices unreadable.
+  causal_mechanism: Lack of table-normalization logic to flatten nested elements before executing AST conversions.
+  domain_category: tool-defects
+  system_boundary: build-publish
+  impact:
+  - rendering
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: parser-hardening
+  wqo_links:
+  - rendering
+  project_links:
+  - *id002
+- id: P-52
+  title: Title Double-Dip Defect
+  problem_statement: Automated processors prepend a new H1 title to a Markdown file that already contains a valid title, displaying
+    redundant duplicated titles on migrated pages.
+  causal_mechanism: Naive regex parsing that fails to inspect the first lines of document body or YAML frontmatter before
+    prepending elements.
+  domain_category: tool-defects
+  system_boundary: build-publish
+  impact:
+  - rendering
+  risk_severity: cosmetic
+  resolution_pattern: parser-hardening
+  wqo_links:
+  - rendering
+  project_links:
+  - *id002
+- id: P-53
+  title: Missing Empty Download Validations
+  problem_statement: A scraper run appears successful but silently outputs empty or near-empty .md files to disk, causing
+    mass documentation deletion on the production site.
+  causal_mechanism: Scripts evaluate success based solely on HTTP status codes without checking download payload length.
+  domain_category: tool-defects
+  system_boundary: build-publish
+  impact:
+  - reader-comprehension
+  - rendering
+  risk_severity: credibility
+  resolution_pattern: payload-check
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-54
+  title: Cross-Platform CLI Portability Issues
+  problem_statement: In-place editing commands fail when developer workstations mix macOS and Linux due to core differences
+    in Unix utilities, causing global build scripts to fail on local developer workstations.
+  causal_mechanism: Core differences in BSD vs GNU Unix utilities not accounted for in build scripts.
+  domain_category: tool-defects
+  system_boundary: build-publish
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: portability-test
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-55
+  title: Build Dependency Gaps in LLM Agents
+  problem_statement: Autonomous coding agents make codebase changes but fail to run the local dependency installer, causing
+    build-stage execution failures on missing module dependencies.
+  causal_mechanism: Agent lacks specific procedural parameters to run environment commands after modifying configurations.
+  domain_category: tool-defects
+  system_boundary: build-publish
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: agent-protocol
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-56
+  title: Flat Project Layout Mutations
+  problem_statement: An AI coding agent builds a flat project layout instead of deploying the mandated monorepo structure,
+    requiring manual refactoring and repository restructuring.
+  causal_mechanism: Failure to establish workspace configuration files physically on disk before initiating agent loops.
+  domain_category: tool-defects
+  system_boundary: build-publish
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: agent-protocol
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-57
+  title: Narrative Hallucinations in Single Prompts
+  problem_statement: Single-prompt narrative evaluations cause the LLM to output hallucinated data points to complete time-series
+    charts, producing highly inaccurate metrics reporting.
+  causal_mechanism: Overloading the context window and prompting for complex numerical logic and narrative synthesis simultaneously.
+  domain_category: tool-defects
+  system_boundary: consumption
+  impact:
+  - reader-trust
+  - author-credibility
+  risk_severity: credibility
+  resolution_pattern: prompt-chain
+  wqo_links:
+  - unsupported-claims
+  project_links:
+  - *id002
+- id: P-58
+  title: Missing Step-by-Step UI Wizard
+  problem_statement: A platform migration tool launches with a flat dashboard, violating usability requirements for guided
+    migration and causing non-technical contributors to struggle with execution.
+  causal_mechanism: Developer teams build standard administrative interfaces without mapping the specific step-by-step onboarding
+    journey of users.
+  domain_category: tool-defects
+  system_boundary: consumption
+  impact:
+  - reader-comprehension
+  - accessibility-cognitive
+  risk_severity: functional
+  resolution_pattern: ux-design
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-59
+  title: Absence of Compliance Linting in Migrators
+  problem_statement: A migration script successfully moves files but fails to run standard Markdown or platform compliance
+    checks, pushing non-compliant content to the new production site.
+  causal_mechanism: Migration design is treated as a simple move-file pipeline rather than an integrated ingest-clean-validate
+    system.
+  domain_category: tool-defects
+  system_boundary: build-publish
+  impact:
+  - reader-comprehension
+  - legal-compliance
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-60
+  title: Missing Containerized Deployment Configs
+  problem_statement: Software developers release local tooling configurations but omit the Dockerfile and Compose setup, creating
+    onboarding friction across diverse developer OS setups.
+  causal_mechanism: Project delivery scopes overlook runtime portability, leaving environment-specific setup to the end user.
+  domain_category: tool-defects
+  system_boundary: build-publish
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: devops-standard
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-61
+  title: Missing Logical Flow UI Maps
+  problem_statement: A migration portal lacks any visual diagram illustrating the complex extraction and transformation logic,
+    causing high support overhead as users cannot trace how their content is processed.
+  causal_mechanism: Technical developers prioritize backend logic, omitting visual design elements necessary for non-technical
+    users.
+  domain_category: tool-defects
+  system_boundary: consumption
+  impact:
+  - reader-comprehension
+  - cognitive-overload
+  risk_severity: functional
+  resolution_pattern: ux-design
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-62
+  title: AI Hallucinations Fueled by Stale Source Data
+  problem_statement: AI coding agents generate code containing severe syntax errors and obsolete API parameters because they
+    consume outdated, inaccurate documentation as ground-truth context during RAG queries.
+  causal_mechanism: Coding assistants consume outdated documentation as ground-truth without freshness validation.
+  domain_category: ai-ml-limitations
+  system_boundary: consumption
+  impact:
+  - rag-retrieval
+  - reader-trust
+  - reader-comprehension
+  risk_severity: safety
+  resolution_pattern: content-audit
+  wqo_links:
+  - rag-retrieval
+  - temporal-accuracy
+  - semantic-density
+  project_links:
+  - *id001
+  - *id003
+  - *id004
+  - *id002
+- id: P-63
+  title: Copilot Enterprise Private RAG Restrictions
+  problem_statement: Organizations cannot natively connect private, local, or secure knowledge bases to their developer AI
+    assistants due to custom RAG integration capabilities being locked behind high-tier SaaS licensing.
+  causal_mechanism: Custom RAG integration capabilities locked behind enterprise licensing structures.
+  domain_category: ai-ml-limitations
+  system_boundary: consumption
+  impact:
+  - rag-retrieval
+  risk_severity: functional
+  resolution_pattern: architecture-constraint
+  wqo_links:
+  - rag-retrieval
+  project_links:
+  - *id002
+- id: P-64
+  title: The "One Size Fits None" Discovery Trap
+  problem_statement: Platform teams design user guides solely around tasks (JTBD), ignoring different user personas, overwhelming
+    beginners with dense architectural references while slowing expert developers with basic tutorials.
+  causal_mechanism: Disregarding the stark difference in vocabulary, focus, and technical depth between beginner and principal-level
+    engineers.
+  domain_category: ai-ml-limitations
+  system_boundary: consumption
+  impact:
+  - reader-comprehension
+  - cognitive-overload
+  - accessibility-cognitive
+  risk_severity: functional
+  resolution_pattern: persona-design
+  wqo_links:
+  - readability
+  project_links:
+  - *id003
+  - *id004
+  - *id002
+- id: P-65
+  title: Low-Fidelity Headless AI Content Volume
+  problem_statement: Headless AI documentation pipelines generate hundreds of pages that lack specific, contextual details,
+    creating content spam that hinders information search and fails to answer complex edge cases.
+  causal_mechanism: AI generators rely on general pre-trained knowledge bases, lacking integration with local environment
+    and security specifications.
+  domain_category: ai-ml-limitations
+  system_boundary: consumption
+  impact:
+  - rag-retrieval
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: content-audit
+  wqo_links:
+  - semantic-density
+  - rag-retrieval
+  project_links:
+  - *id004
+  - *id002
+- id: P-66
+  title: Runtime Code Execution Dependencies
+  problem_statement: Linguistic audit tools depend on real-time execution of local scripting libraries to output visual charts,
+    causing build failures on lightweight CI environments with limited permissions.
+  causal_mechanism: Over-reliance on local Python development dependencies rather than deploying pre-compiled static vectors.
+  domain_category: ai-ml-limitations
+  system_boundary: infrastructure
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: dependency-isolation
+  wqo_links: []
+  project_links:
+  - *id001
+  - *id002
+- id: P-67
+  title: VLM Context Window Page Truncation
+  problem_statement: Visual screenshot validators fail to process long-form technical manuals because context window limits
+    in Vision-Language Models prevent processing high-resolution visual layouts and text simultaneously.
+  causal_mechanism: Context window limits in VLMs prevent simultaneous processing of high-resolution layouts and text.
+  domain_category: ai-ml-limitations
+  system_boundary: consumption
+  impact:
+  - rendering
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: chunking-strategy
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-68
+  title: Non-Actionable Academic Quality Frameworks
+  problem_statement: Standard academic quality models prove too complex for practical day-to-day writing feedback, using overly
+    fine gradations and abstract metrics that cannot be easily automated in software linting, causing teams to reject quality
+    metrics entirely.
+  causal_mechanism: Academic methodologies use overly fine gradations and abstract metrics that cannot be easily automated.
+  domain_category: ai-ml-limitations
+  system_boundary: consumption
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: framework-simplification
+  wqo_links:
+  - readability
+  project_links:
+  - *id004
+  - *id002
+- id: P-69
+  title: SME Reviewer Fatigue
+  problem_statement: Subject matter experts straight-line scores or bypass quality reviews entirely during manual audits when
+    overloaded with massive, multi-page questionnaires on a high volume of complex technical documents.
+  causal_mechanism: Overloading reviewers with massive multi-page questionnaires at high document volume.
+  domain_category: hitl-evaluation
+  system_boundary: governance
+  impact:
+  - reader-trust
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: atomic-review
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-70
+  title: Low-Resolution Composite Scoring
+  problem_statement: Platform teams assign a single quality score to an entire large document set, preventing identification
+    of which specific topic type generators are producing poor outputs.
+  causal_mechanism: Evaluating large document groups as a single macro-unit rather than establishing micro-audits at the atomic
+    section level.
+  domain_category: hitl-evaluation
+  system_boundary: governance
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: atomic-review
+  wqo_links:
+  - readability
+  project_links:
+  - *id004
+  - *id002
+- id: P-71
+  title: SME Resistance to Complex Evaluation Flows
+  problem_statement: Engineers object to documentation review processes complaining about too many forms when reviewers must
+    manually enter document metadata fields that could be pre-filled automatically.
+  causal_mechanism: Failure to automate pre-filled context parameters, forcing reviewers to manually enter document metadata.
+  domain_category: hitl-evaluation
+  system_boundary: governance
+  impact:
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: ux-design
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-72
+  title: Lack of Recertification Audit Trails
+  problem_statement: Knowledge managers cannot verify if an expired document was actually read before recertification because
+    publishing platforms allow users to reset expiration timers without providing a verified log of changes.
+  causal_mechanism: Publishing platforms allow timer resets without verified change logs.
+  domain_category: hitl-evaluation
+  system_boundary: governance
+  impact:
+  - reader-trust
+  - legal-compliance
+  risk_severity: credibility
+  resolution_pattern: audit-gate
+  wqo_links:
+  - temporal-accuracy
+  project_links:
+  - *id002
+- id: P-73
+  title: Local VRAM Hardware Ceilings
+  problem_statement: Developer workstations with limited VRAM fail to run high-parameter local LLMs, restricting local AI
+    assistance to low-parameter models that lack logical depth for multi-file refactoring.
+  causal_mechanism: Physical hardware memory constraints; model weights exceed available GPU VRAM boundaries.
+  domain_category: hardware-infrastructure
+  system_boundary: infrastructure
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: model-sizing
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-74
+  title: High VRAM Footprint of Academic NLP Models
+  problem_statement: Running advanced rhetorical and argument-mining pipelines locally requires 8GB+ of dedicated VRAM, restricting
+    quality checking to a small subset of high-end developer devices.
+  causal_mechanism: Complex scientific transformer models carry massive weight tensors that cannot execute on standard devices.
+  domain_category: hardware-infrastructure
+  system_boundary: infrastructure
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: model-sizing
+  wqo_links: []
+  project_links:
+  - *id001
+  - *id002
+- id: P-75
+  title: Massive Container Storage Requirements
+  problem_statement: Rhetoric audit tools require 12GB+ of local disk space to deploy pre-trained model weights, causing developers
+    to refuse installation as it consumes a significant percentage of workstation SSD capacity.
+  causal_mechanism: Large deep-learning weights and containerized scientific runtime environments require extensive storage.
+  domain_category: hardware-infrastructure
+  system_boundary: infrastructure
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: model-sizing
+  wqo_links: []
+  project_links:
+  - *id001
+  - *id002
+- id: P-76
+  title: High CPU Overhead of Docs Compilation
+  problem_statement: Compiling static document sites across hundreds of software repositories takes hours of server runtime
+    without caching, blocking continuous delivery pipelines on every pull request.
+  causal_mechanism: Crawling and building static assets for many large repositories is computationally intensive and lacks
+    incremental caching.
+  domain_category: hardware-infrastructure
+  system_boundary: infrastructure
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: build-caching
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-77
+  title: Unstable Beta-State Graph Infrastructure
+  problem_statement: Enterprise knowledge graph systems rely on cloud graph database services flagged in near-beta state,
+    causing frequent query failures and data-sync drops that corrupt platform maps.
+  causal_mechanism: Over-reliance on newly launched cloud service offerings that have not undergone enterprise-level stability
+    hardening.
+  domain_category: hardware-infrastructure
+  system_boundary: infrastructure
+  impact:
+  - reader-trust
+  - rag-retrieval
+  risk_severity: credibility
+  resolution_pattern: infrastructure-hardening
+  wqo_links:
+  - rag-retrieval
+  project_links:
+  - *id002
+- id: P-78
+  title: Computationally Intensive Graph Processing
+  problem_statement: Generating relational graphs for large enterprise codebases consumes massive memory, causing server timeouts
+    and forcing teams to rely on slow scheduled overnight builds rather than real-time audits.
+  causal_mechanism: AST parsing and entity relationship extraction scales exponentially with codebase size.
+  domain_category: hardware-infrastructure
+  system_boundary: infrastructure
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: build-caching
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-79
+  title: The "Noise Floor" Documentation Utility Gap
+  problem_statement: Developers completely stop consulting the internal knowledge base, preferring to ask peer engineers directly,
+    because documentation is written in a generic non-specific manner that fails to address the reader's actual role or environment.
+  causal_mechanism: Documentation written for a generic audience without considering specific developer roles, environments,
+    or expertise levels.
+  domain_category: organizational
+  system_boundary: consumption
+  impact:
+  - reader-comprehension
+  - reader-trust
+  risk_severity: credibility
+  resolution_pattern: persona-design
+  wqo_links:
+  - readability
+  project_links:
+  - *id003
+  - *id004
+  - *id002
+- id: P-80
+  title: The Hidden "SME Tax"
+  problem_statement: Highly paid principal engineers spend up to 20% of their weekly capacity answering recurring onboarding
+    questions in Slack because static documentation is incomplete or unfindable.
+  causal_mechanism: Static documentation is incomplete or unfindable, forcing teams to rely on informal direct messaging networks.
+  domain_category: organizational
+  system_boundary: governance
+  impact:
+  - reader-comprehension
+  - reader-trust
+  risk_severity: credibility
+  resolution_pattern: content-audit
+  wqo_links:
+  - structural-completeness
+  - readability
+  project_links:
+  - *id003
+  - *id004
+  - *id002
+- id: P-81
+  title: Redundant Technology Reconstruction
+  problem_statement: Engineering teams spend weeks building features and APIs that already exist within the corporate ecosystem
+    because poor search discoverability and fragmented codebase documentation hide existing reusable assets.
+  causal_mechanism: Poor search discoverability and fragmented documentation hide existing reusable assets.
+  domain_category: organizational
+  system_boundary: governance
+  impact:
+  - reader-trust
+  - seo-discoverability
+  risk_severity: credibility
+  resolution_pattern: discoverability
+  wqo_links:
+  - seo-discoverability
+  - rag-retrieval
+  project_links:
+  - *id002
+- id: P-82
+  title: Production Outages from Corrupted AI Docs
+  problem_statement: AI assistants generate configuration commands containing subtle syntax errors which engineers execute
+    in production, causing severe downtime, financial loss, and security vulnerabilities.
+  causal_mechanism: Failing to implement automated validation checks on AI-generated documentation before serving it to developers.
+  domain_category: organizational
+  system_boundary: consumption
+  impact:
+  - reader-trust
+  - legal-compliance
+  risk_severity: safety
+  resolution_pattern: ci-gate
+  wqo_links:
+  - rag-retrieval
+  - code-doc-drift
+  project_links:
+  - *id001
+  - *id004
+  - *id002
+- id: P-83
+  title: Educational Ghostwriting Compliance Risk
+  problem_statement: AI-assisted writing tools generate finalized goals for students rather than scaffolding their own writing
+    process, violating federal special education frameworks and preventing development of core literacy competencies.
+  causal_mechanism: AI writing models generate prose directly rather than guiding and scaffolding the student to identify
+    and correct their own errors.
+  domain_category: organizational
+  system_boundary: authoring
+  impact:
+  - legal-compliance
+  - inclusivity
+  risk_severity: safety
+  resolution_pattern: editorial-review
+  wqo_links:
+  - author-credibility
+  project_links:
+  - *id002
+- id: P-84
+  title: Persona Consistency Churn
+  problem_statement: A customized narrative analyst assistant periodically reverts to generic, sterile AI tone due to weak
+    system prompt parameters that fail to enforce strict persona constraints through multi-turn conversational loops.
+  causal_mechanism: Weak system prompt parameters that fail to enforce strict persona constraints through multi-turn loops.
+  domain_category: organizational
+  system_boundary: consumption
+  impact:
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: persona-design
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-85
+  title: High Friction Hard-Gate Blocks
+  problem_statement: Rigorous quality analysis engines hard-block user requests for minor quality issues, causing immediate
+    friction and developer pushback that leads users to abandon the tool entirely.
+  causal_mechanism: Adopting uncompromising binary block gates for minor quality issues rather than using guided, proactive
+    suggestions.
+  domain_category: organizational
+  system_boundary: consumption
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: graduated-feedback
+  wqo_links:
+  - readability
+  project_links:
+  - *id001
+  - *id004
+  - *id002
+- id: P-86
+  title: Un-Anticipated SSO Token Expiration
+  problem_statement: Automated inventory scripts crash silently when run on long execution runs because CLI tools assume initial
+    SSO and PAT tokens remain valid forever, lacking token-refresh logic.
+  causal_mechanism: CLI tools coded to assume initial SSO/PAT tokens remain valid forever, lacking token-refresh logic.
+  domain_category: pipeline-process
+  system_boundary: build-publish
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: token-refresh
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-87
+  title: Missing Technical Project KPIs
+  problem_statement: An automated documentation inventory project launches without any quantitative success metrics, making
+    it impossible to measure business impact or ROI and risking program defunding.
+  causal_mechanism: Project managers fail to define specific runtime thresholds, codebase coverage metrics, or feature detection
+    accuracy rates.
+  domain_category: pipeline-process
+  system_boundary: governance
+  impact:
+  - reader-trust
+  risk_severity: credibility
+  resolution_pattern: metrics-protocol
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-88
+  title: Fragile Error Handling in Scrapers
+  problem_statement: A single corrupted configuration file on a remote repository crashes the entire multi-repo scraping pipeline,
+    making global reporting systems highly unstable and frequently failing to generate daily compliance metrics.
+  causal_mechanism: Absence of robust try-except catch blocks and graceful degradation strategies in the repository crawling
+    engine.
+  domain_category: pipeline-process
+  system_boundary: build-publish
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: error-hardening
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-89
+  title: API Rate-Limiting Bottlenecks
+  problem_statement: Enterprise API rate limits block data-extraction runs on large corporate codebases when crawling scripts
+    send rapid serial API calls without implementing rate-limit sensing or backoff delays.
+  causal_mechanism: Crawling scripts send rapid, serial API calls without implementing rate-limit sensing or exponential backoff.
+  domain_category: pipeline-process
+  system_boundary: build-publish
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: rate-limit-handling
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-90
+  title: Local Build Execution Restrictions
+  problem_statement: Security policies prohibit executing automated migration pipelines inside centralized CI environments,
+    limiting migration velocity to individual workstation capability and preventing enterprise-level automated rollouts.
+  causal_mechanism: Strict compliance boundaries force all migration and build processing to execute on local developer devices.
+  domain_category: pipeline-process
+  system_boundary: build-publish
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: architecture-constraint
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-91
+  title: Undocumented Core Code Segments
+  problem_statement: Large legacy systems contain thousands of lines of critical functional logic without a single explanatory
+    line of documentation, causing maintenance debt to scale rapidly and requiring expensive pair-programming for onboarding.
+  causal_mechanism: Engineering teams prioritize raw output, failing to align software updates with corresponding documentation
+    stories.
+  domain_category: pipeline-process
+  system_boundary: versioning
+  impact:
+  - reader-comprehension
+  - rag-retrieval
+  risk_severity: credibility
+  resolution_pattern: authoring-protocol
+  wqo_links:
+  - structural-completeness
+  - code-doc-drift
+  project_links:
+  - *id001
+  - *id002
+- id: P-92
+  title: Visual Spaghetti in Large Link Maps
+  problem_statement: Interactive documentation navigation maps degrade into massive, unreadable spaghetti networks for large
+    sites when all document relationships are plotted on a single flat canvas without hierarchical filters.
+  causal_mechanism: Attempting to plot all document relationships on a single flat canvas without hierarchical or contextual
+    filters.
+  domain_category: pipeline-process
+  system_boundary: consumption
+  impact:
+  - reader-comprehension
+  - cognitive-overload
+  risk_severity: functional
+  resolution_pattern: ux-design
+  wqo_links:
+  - cognitive-overload
+  project_links:
+  - name: quartz-site
+    path: /home/rik/Documents/github/quartz-site/
+    relationship: consumes
+  - *id002
+- id: P-93
+  title: SCI Calculation Anomalies
+  problem_statement: A narrative analyst's performance math crashes when analytical anchor nodes are highly clustered because
+    mathematical formulas lack distribution safeguards to normalize scores when volatility anchors cluster in a narrow window.
+  causal_mechanism: Mathematical formulas lack distribution safeguards to normalize scores when volatility anchors cluster
+    narrowly.
+  domain_category: pipeline-process
+  system_boundary: consumption
+  impact:
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: math-hardening
+  wqo_links: []
+  project_links:
+  - *id002
+- id: P-94
+  title: Unstructured Known Issue Tracking
+  problem_statement: Platform support teams document system errors and production workarounds on ad-hoc isolated sticky notes
+    and Slack channels without a unified schema-validated error message standard linking system exception codes to runbook
+    articles.
+  causal_mechanism: Absence of a unified schema-validated error message standard linking system exception codes directly to
+    runbook articles.
+  domain_category: pipeline-process
+  system_boundary: governance
+  impact:
+  - reader-comprehension
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: schema-standard
+  wqo_links:
+  - structural-completeness
+  project_links:
+  - *id002
+- id: P-95
+  title: Silent Failures on Asset Restructuring
+  problem_statement: A document migration pipeline finishes without errors but leaves dead image icons on half of the migrated
+    pages because migration scripts lack verification checks to confirm physical assets were successfully written to their
+    target directory.
+  causal_mechanism: Migration scripts lack verification checks to confirm physical assets were successfully written to their
+    target directory.
+  domain_category: pipeline-process
+  system_boundary: build-publish
+  impact:
+  - rendering
+  - reader-trust
+  risk_severity: credibility
+  resolution_pattern: payload-check
+  wqo_links:
+  - rendering
+  project_links:
+  - *id002
+- id: P-96
+  title: Terminological Conflict and Brand Drift
+  problem_statement: Different engineering teams use competing names for identical technical concepts interchangeably, causing
+    inconsistent search indexing and high user confusion as RAG systems return fragmented context due to semantic synonym
+    clutter.
+  causal_mechanism: Absence of an automated terminology checker and dictionary policy gate enforced natively inside developer
+    IDEs.
+  domain_category: pipeline-process
+  system_boundary: consumption
+  impact:
+  - reader-comprehension
+  - seo-discoverability
+  - rag-retrieval
+  risk_severity: functional
+  resolution_pattern: terminology-gate
+  wqo_links:
+  - terminological-consistency
+  project_links:
+  - *id001
+  - *id004
+  - *id002
