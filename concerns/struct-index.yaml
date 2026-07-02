@@ -23,7 +23,7 @@ classification:
   address_when: publishing
   impact:
   - reader-comprehension
-  - accessibility
+  - accessibility-technical
   risk_severity: cosmetic
   responsible_role:
   - information-architect

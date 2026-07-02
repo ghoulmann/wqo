@@ -1,0 +1,40 @@
+title: Parallel Structure
+description: The grammatical requirement that items in a list, series, or paired construction
+  share the same syntactic form — all noun phrases, all infinitives, all clauses —
+  to reduce processing load and signal equivalent logical status.
+wordnet:
+  term: parallel structure
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: mechanical
+  stage: post-compositional
+  scale:
+  - sentence-level
+  - paragraph-level
+  concern_type: grammatical
+  evaluator:
+  - human-line-editor
+  - automated
+  determinism: rule-violation
+  writing_stage:
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: revising
+  impact:
+  - reader-comprehension
+  - accessibility-cognitive
+  risk_severity: cosmetic
+  responsible_role:
+  - line-editor
+  - self-editor
+  - copy-editor
+  audience_sensitivity:
+  - second-language-learner
+  - cognitive-disability
+relationships: {}
+diagnostic_question: Do all items in this list, heading series, or paired construction
+  share the same grammatical form?

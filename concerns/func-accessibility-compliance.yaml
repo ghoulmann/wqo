@@ -1,0 +1,37 @@
+title: Accessibility Compliance
+description: 'Conformance to WCAG 2.1/2.2 success criteria at the publishing stage:
+  all non-decorative images have alt text, text contrast meets AA minimums, interactive
+  components are keyboard-navigable, and content is navigable by screen reader.'
+wordnet:
+  term: accessibility compliance
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: functional
+  stage: post-compositional
+  scale:
+  - document-level
+  - system-level
+  concern_type: technical
+  evaluator:
+  - automated
+  - human-technical-qa
+  determinism: rule-violation
+  writing_stage: publishing
+  address_when: publishing
+  impact:
+  - accessibility-technical
+  - accessibility-presentation
+  - accessibility-cognitive
+  risk_severity: functional
+  responsible_role:
+  - technical-qa
+  - publisher
+  - information-architect
+  audience_sensitivity:
+  - screen-reader-user
+  - low-vision
+  - cognitive-disability
+relationships: {}
+diagnostic_question: Does this published content meet WCAG 2.1 Level AA success criteria?

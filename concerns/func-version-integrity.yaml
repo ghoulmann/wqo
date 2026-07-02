@@ -1,0 +1,32 @@
+title: Version Integrity
+description: 'The guarantee that published content matches the reviewed, approved
+  draft: no post-review edits bypass approval, version-tagged documentation matches
+  the tagged code release, and the correct version is served to the correct audience.'
+wordnet:
+  term: version integrity
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: functional
+  stage: post-compositional
+  scale:
+  - document-level
+  - system-level
+  concern_type: technical
+  evaluator:
+  - automated
+  - human-technical-qa
+  determinism: risk-factor
+  writing_stage: publishing
+  address_when: publishing
+  impact:
+  - reader-trust
+  - rag-retrieval
+  risk_severity: functional
+  responsible_role:
+  - publisher
+  - technical-qa
+relationships: {}
+diagnostic_question: Does the published content exactly match the reviewed and approved
+  version?

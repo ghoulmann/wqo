@@ -1,0 +1,38 @@
+title: Translation Pipeline Quality
+description: 'The correctness of the localization production process: source strings
+  extracted without corruption, machine translation reviewed before publish, all locales
+  receive translated content (no silent English fallback), and locale-specific formatting
+  (date, currency, number) is applied correctly.'
+wordnet:
+  term: translation pipeline
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: functional
+  stage: post-compositional
+  scale:
+  - document-level
+  - system-level
+  concern_type: technical
+  evaluator:
+  - automated
+  - human-technical-qa
+  determinism: risk-factor
+  writing_stage: publishing
+  address_when: publishing
+  impact:
+  - reader-comprehension
+  - reader-trust
+  - accessibility-cognitive
+  risk_severity: functional
+  responsible_role:
+  - publisher
+  - technical-qa
+  - author
+  audience_sensitivity:
+  - cross-cultural
+  - second-language-learner
+relationships: {}
+diagnostic_question: Has every locale received correctly translated, reviewed content
+  with locale-specific formatting applied?

@@ -1,0 +1,39 @@
+title: Citation Completeness
+description: The requirement that all claims requiring attribution — quoted material,
+  empirical data, regulatory requirements, standards references — include a verifiable
+  citation that enables readers to locate the source.
+wordnet:
+  term: citation complete
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: functional
+  stage: post-compositional
+  scale:
+  - sentence-level
+  - document-level
+  concern_type:
+  - technical
+  - logical
+  evaluator:
+  - human-peer-reviewer
+  - human-structural-editor
+  - automated
+  determinism: rule-violation
+  writing_stage:
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: revising
+  impact:
+  - reader-trust
+  - author-credibility
+  risk_severity: credibility
+  responsible_role:
+  - author
+  - peer-reviewer
+  - structural-editor
+relationships: {}
+diagnostic_question: Do all claims requiring attribution have a verifiable citation?

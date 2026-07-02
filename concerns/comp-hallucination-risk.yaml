@@ -1,0 +1,47 @@
+title: Hallucination Risk
+description: The risk that AI-assisted writing introduces unverifiable, fabricated,
+  or confidently stated false claims — particularly in factual passages, code examples,
+  API parameter descriptions, or citations — without the author detecting them.
+wordnet:
+  term: hallucination risk
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: computational
+  stage:
+  - compositional
+  - post-compositional
+  scale:
+  - sentence-level
+  - paragraph-level
+  - document-level
+  concern_type:
+  - computational
+  - technical
+  evaluator:
+  - human-peer-reviewer
+  - human-technical-qa
+  - automated
+  determinism: risk-factor
+  writing_stage:
+  - drafting
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: drafting
+  impact:
+  - reader-trust
+  - author-credibility
+  - rag-retrieval
+  risk_severity: functional
+  responsible_role:
+  - author
+  - peer-reviewer
+  - technical-qa
+  - ai-tool
+  audience_sensitivity: domain-novice
+relationships: {}
+diagnostic_question: Have all factual claims, code examples, and citations in AI-assisted
+  content been independently verified?

@@ -1,0 +1,34 @@
+title: Rendering Fidelity
+description: The degree to which content renders correctly and completely across its
+  target output formats — HTML, PDF, ePub, mobile — without layout corruption, missing
+  elements, or format-specific display failures.
+wordnet:
+  term: rendering fidelity
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: computational
+  stage:
+  - compositional
+  - post-compositional
+  scale:
+  - document-level
+  - system-level
+  concern_type: technical
+  evaluator:
+  - automated
+  - human-technical-qa
+  determinism: rule-violation
+  writing_stage: publishing
+  address_when: publishing
+  impact:
+  - rendering
+  - accessibility-presentation
+  risk_severity: functional
+  responsible_role:
+  - technical-qa
+  - publisher
+relationships: {}
+diagnostic_question: Does this content render correctly across all its target output
+  formats?

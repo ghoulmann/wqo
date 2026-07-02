@@ -1,0 +1,32 @@
+title: Code-Documentation Drift
+description: The progressive divergence of documentation from the codebase or system
+  it describes, caused by code changes that are not reflected in accompanying documentation.
+wordnet:
+  term: code doc drift
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: functional
+  stage: post-compositional
+  scale:
+  - document-level
+  - system-level
+  concern_type: technical
+  evaluator:
+  - automated
+  - human-technical-qa
+  determinism: risk-factor
+  writing_stage: publishing
+  address_when: publishing
+  impact:
+  - reader-trust
+  - rag-retrieval
+  risk_severity: functional
+  responsible_role:
+  - author
+  - technical-qa
+  - publisher
+relationships: {}
+diagnostic_question: Does the documentation reflect the current behavior, API, or
+  architecture of the system it describes?

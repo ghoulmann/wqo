@@ -22,7 +22,8 @@ classification:
   impact:
   - rendering
   - reader-trust
-  - accessibility
+  - accessibility-technical
+  - accessibility-presentation
   risk_severity: functional
   responsible_role:
   - technical-qa

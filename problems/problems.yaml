@@ -133,8 +133,8 @@ problems:
   risk_severity: functional
   resolution_pattern: genre-enforcement
   wqo_links:
-  - diataxis-genre
-  - structural-coherence
+  - topic-type
+  - coherence
   project_links:
   - *id003
   - &id004
@@ -156,8 +156,8 @@ problems:
   risk_severity: functional
   resolution_pattern: genre-enforcement
   wqo_links:
-  - diataxis-genre
-  - structural-coherence
+  - topic-type
+  - coherence
   project_links:
   - *id003
   - *id004
@@ -175,7 +175,7 @@ problems:
   risk_severity: functional
   resolution_pattern: content-audit
   wqo_links:
-  - diataxis-genre
+  - topic-type
   - structural-completeness
   project_links:
   - *id003
@@ -327,7 +327,7 @@ problems:
   resolution_pattern: semantic-linting
   wqo_links:
   - coherence
-  - structural-coherence
+  - coherence
   - heading-clarity
   project_links:
   - *id001
@@ -426,8 +426,8 @@ problems:
   risk_severity: credibility
   resolution_pattern: editorial-review
   wqo_links:
-  - unsupported-claims
-  - false-balance
+  - informal-fallacy
+  - informal-fallacy
   project_links:
   - *id001
   - *id004
@@ -445,8 +445,8 @@ problems:
   risk_severity: credibility
   resolution_pattern: editorial-review
   wqo_links:
-  - false-balance
-  - unsupported-claims
+  - informal-fallacy
+  - informal-fallacy
   project_links:
   - *id004
   - *id002
@@ -479,8 +479,7 @@ problems:
   - reader-trust
   risk_severity: functional
   resolution_pattern: ci-gate
-  wqo_links:
-  - rendering
+  wqo_links: []
   project_links:
   - *id002
 - id: P-26
@@ -497,9 +496,9 @@ problems:
   risk_severity: functional
   resolution_pattern: genre-enforcement
   wqo_links:
-  - diataxis-genre
+  - topic-type
   - faq-antipattern
-  - structural-coherence
+  - coherence
   project_links:
   - *id003
   - *id004
@@ -534,7 +533,7 @@ problems:
   risk_severity: functional
   resolution_pattern: genre-enforcement
   wqo_links:
-  - diataxis-genre
+  - topic-type
   - structural-completeness
   project_links:
   - *id003
@@ -556,7 +555,7 @@ problems:
   wqo_links:
   - rag-retrieval
   - semantic-density
-  - structural-coherence
+  - coherence
   project_links:
   - *id001
   - *id003
@@ -575,8 +574,7 @@ problems:
   - seo-discoverability
   risk_severity: functional
   resolution_pattern: migration-tooling
-  wqo_links:
-  - rendering
+  wqo_links: []
   project_links:
   - *id002
 - id: P-31
@@ -591,8 +589,7 @@ problems:
   - rendering
   risk_severity: functional
   resolution_pattern: migration-tooling
-  wqo_links:
-  - rendering
+  wqo_links: []
   project_links:
   - *id002
 - id: P-32
@@ -608,8 +605,7 @@ problems:
   - accessibility-presentation
   risk_severity: functional
   resolution_pattern: migration-tooling
-  wqo_links:
-  - rendering
+  wqo_links: []
   project_links:
   - *id002
 - id: P-33
@@ -625,7 +621,7 @@ problems:
   risk_severity: functional
   resolution_pattern: governance-standard
   wqo_links:
-  - structural-coherence
+  - coherence
   project_links:
   - *id002
 - id: P-34
@@ -685,8 +681,7 @@ problems:
   - seo-discoverability
   risk_severity: credibility
   resolution_pattern: ci-gate
-  wqo_links:
-  - rendering
+  wqo_links: []
   project_links:
   - *id002
 - id: P-38
@@ -901,8 +896,7 @@ problems:
   - reader-comprehension
   risk_severity: functional
   resolution_pattern: parser-hardening
-  wqo_links:
-  - rendering
+  wqo_links: []
   project_links:
   - *id002
 - id: P-52
@@ -917,8 +911,7 @@ problems:
   - rendering
   risk_severity: cosmetic
   resolution_pattern: parser-hardening
-  wqo_links:
-  - rendering
+  wqo_links: []
   project_links:
   - *id002
 - id: P-53
@@ -991,7 +984,7 @@ problems:
   risk_severity: credibility
   resolution_pattern: prompt-chain
   wqo_links:
-  - unsupported-claims
+  - informal-fallacy
   project_links:
   - *id002
 - id: P-58
@@ -1418,8 +1411,7 @@ problems:
   - inclusivity
   risk_severity: safety
   resolution_pattern: editorial-review
-  wqo_links:
-  - author-credibility
+  wqo_links: []
   project_links:
   - *id002
 - id: P-84
@@ -1612,8 +1604,7 @@ problems:
   - reader-trust
   risk_severity: credibility
   resolution_pattern: payload-check
-  wqo_links:
-  - rendering
+  wqo_links: []
   project_links:
   - *id002
 - id: P-96
@@ -1632,8 +1623,451 @@ problems:
   risk_severity: functional
   resolution_pattern: terminology-gate
   wqo_links:
-  - terminological-consistency
+  - terminology-consistency
   project_links:
   - *id001
   - *id004
+  - *id002
+- id: P-97
+  title: Alt Text Missing from Documentation Images
+  problem_statement: Documentation images, diagrams, and screenshots are published without alt text, making content inaccessible
+    to screen reader users and breaking WCAG 2.1 Success Criterion 1.1.1.
+  causal_mechanism: No automated alt-text presence check in the build pipeline; authors treat alt text as optional.
+  domain_category: quality-defects
+  system_boundary: build-publish
+  impact:
+  - accessibility-technical
+  - accessibility-cognitive
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links:
+  - accessibility-compliance
+  project_links:
+  - *id002
+- id: P-98
+  title: Insufficient Color Contrast in Published Code Blocks
+  problem_statement: Syntax-highlighted code blocks in published documentation fail WCAG 2.1 AA contrast ratio requirements
+    (4.5:1 for normal text), making code illegible for users with low vision or color deficiencies.
+  causal_mechanism: Default theme colors selected for aesthetics rather than accessibility; no contrast audit in the publish
+    pipeline.
+  domain_category: quality-defects
+  system_boundary: build-publish
+  impact:
+  - accessibility-presentation
+  - accessibility-cognitive
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links:
+  - accessibility-compliance
+  - rendering-fidelity
+  project_links:
+  - *id002
+- id: P-99
+  title: No Keyboard Navigation in Documentation Site Components
+  problem_statement: Custom documentation site components — tabbed code examples, collapsible sections, interactive API explorers
+    — are not keyboard-navigable, violating WCAG 2.1 Success Criterion 2.1.1 for keyboard-only users.
+  causal_mechanism: Custom components built without ARIA roles or keyboard event handlers; accessibility not part of component
+    acceptance criteria.
+  domain_category: quality-defects
+  system_boundary: build-publish
+  impact:
+  - accessibility-technical
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links:
+  - accessibility-compliance
+  project_links:
+  - *id002
+- id: P-100
+  title: Machine Translation Published Without Human Review
+  problem_statement: Localized documentation is published with raw machine translation output — no terminology alignment,
+    no idiomatic correction, no domain accuracy review — degrading reader trust and comprehension in target-language markets.
+  causal_mechanism: Translation pipeline configured to publish MT output on merge without a human review gate.
+  domain_category: governance
+  system_boundary: build-publish
+  impact:
+  - reader-comprehension
+  - reader-trust
+  risk_severity: credibility
+  resolution_pattern: ownership-protocol
+  wqo_links:
+  - translation-pipeline
+  - localization
+  project_links:
+  - *id002
+- id: P-101
+  title: Locale Fallback Silently Serving English to Non-English Locales
+  problem_statement: When translated content is missing, the site silently serves English content to non-English locales without
+    any indicator to the reader that the content is untranslated, eroding trust in localized products.
+  causal_mechanism: Locale fallback configured to English without a missing-translation flag or banner.
+  domain_category: pipeline-process
+  system_boundary: build-publish
+  impact:
+  - reader-trust
+  - reader-comprehension
+  risk_severity: credibility
+  resolution_pattern: audit-gate
+  wqo_links:
+  - translation-pipeline
+  project_links:
+  - *id002
+- id: P-102
+  title: RTL Layout Regression After Localization Update
+  problem_statement: Right-to-left language localization (Arabic, Hebrew, Farsi) breaks page layout after content updates
+    because CSS does not correctly mirror layout direction, producing overlapping or clipped UI elements in RTL locales.
+  causal_mechanism: RTL layout not included in visual regression test suite; localization updates not tested against RTL rendering.
+  domain_category: pipeline-process
+  system_boundary: build-publish
+  impact:
+  - rendering
+  - accessibility-presentation
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links:
+  - translation-pipeline
+  - rendering-fidelity
+  project_links:
+  - *id002
+- id: P-103
+  title: Source String Freeze Violated Mid-Translation Cycle
+  problem_statement: Source content is updated after strings have been extracted for translation, causing translators to work
+    from outdated source while the updated version is published in the source locale, producing version drift between locales.
+  causal_mechanism: No string freeze enforced at the point of translation initiation; source and translation pipelines run
+    independently without a lock.
+  domain_category: pipeline-process
+  system_boundary: versioning
+  impact:
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: ownership-protocol
+  wqo_links:
+  - translation-pipeline
+  - version-integrity
+  project_links:
+  - *id002
+- id: P-104
+  title: Page Break Corruption in Auto-Generated PDFs
+  problem_statement: Auto-generated PDF documentation introduces page breaks mid-sentence, mid-table, or mid-code-block because
+    the PDF generator does not honor CSS break-inside or break-before rules applied to structured content.
+  causal_mechanism: PDF renderer does not support or correctly implement CSS paged media rules; no PDF output test in the
+    pipeline.
+  domain_category: tool-defects
+  system_boundary: build-publish
+  impact:
+  - rendering
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links:
+  - rendering-fidelity
+  project_links:
+  - *id002
+- id: P-105
+  title: Embedded Diagrams Missing from PDF Output
+  problem_statement: SVG diagrams, Mermaid-rendered charts, and other embedded graphics present in HTML documentation are
+    silently omitted from auto-generated PDF output because the PDF renderer does not support the image format or dynamic
+    rendering.
+  causal_mechanism: PDF pipeline renders from HTML but lacks support for SVG or JavaScript-rendered graphics; no diagram presence
+    check on output.
+  domain_category: tool-defects
+  system_boundary: build-publish
+  impact:
+  - rendering
+  - accessibility-presentation
+  risk_severity: functional
+  resolution_pattern: payload-check
+  wqo_links:
+  - rendering-fidelity
+  - asset-validity
+  project_links:
+  - *id002
+- id: P-106
+  title: Print CSS Missing from Documentation Site
+  problem_statement: 'Documentation pages lack print-specific CSS, causing browsers to render unusable printed output: navigation
+    chrome obscures content, fixed-width code blocks overflow the printed page, and link URLs are not printed.'
+  causal_mechanism: Print stylesheet never authored; print use case not included in documentation site acceptance criteria.
+  domain_category: quality-defects
+  system_boundary: build-publish
+  impact:
+  - rendering
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links:
+  - rendering-fidelity
+  project_links:
+  - *id002
+- id: P-107
+  title: OpenAPI Spec Diverged from Published Swagger UI
+  problem_statement: The OpenAPI specification file and the published Swagger UI interactive reference diverge after manual
+    edits to either file, causing users to encounter undocumented endpoints or documented endpoints that no longer exist.
+  causal_mechanism: OpenAPI spec and Swagger UI source are maintained separately; no automated consistency check enforces
+    agreement.
+  domain_category: documentation-drift
+  system_boundary: versioning
+  impact:
+  - reader-trust
+  - rag-retrieval
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links:
+  - code-doc-drift
+  - version-integrity
+  project_links:
+  - *id002
+- id: P-108
+  title: Auto-Doc Generator Not Wired Into Release CI
+  problem_statement: Reference documentation generated from source code annotations (JSDoc, Sphinx, Doxygen) is not regenerated
+    as part of the release pipeline, allowing the published reference to drift from the released library with each version.
+  causal_mechanism: Auto-doc generation is a manual step not included in the CI release workflow; documentation is regenerated
+    only when a developer remembers to do it.
+  domain_category: pipeline-process
+  system_boundary: build-publish
+  impact:
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links:
+  - code-doc-drift
+  project_links:
+  - *id002
+- id: P-109
+  title: SDK Reference Docs Missing Deprecated Endpoint Markers
+  problem_statement: Released SDK documentation does not mark deprecated methods, parameters, or endpoints as deprecated,
+    causing integrators to continue using deprecated APIs until runtime failures reveal the problem at production.
+  causal_mechanism: Deprecation markers in source code annotations are not propagated to the generated reference documentation;
+    deprecation policy not enforced in the doc build.
+  domain_category: documentation-drift
+  system_boundary: build-publish
+  impact:
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links:
+  - temporal-accuracy
+  - code-doc-drift
+  project_links:
+  - *id002
+- id: P-110
+  title: CHANGELOG Format Inconsistent Across Releases
+  problem_statement: CHANGELOG.md entries use inconsistent formatting — different date formats, mixed heading levels, variable
+    section naming — preventing automated parsing by release tools and making human review error-prone.
+  causal_mechanism: No CHANGELOG format standard enforced; entries written ad-hoc by whoever handles the release.
+  domain_category: governance
+  system_boundary: versioning
+  impact:
+  - reader-comprehension
+  risk_severity: functional
+  resolution_pattern: schema-standard
+  wqo_links:
+  - structural-completeness
+  project_links:
+  - *id002
+- id: P-111
+  title: Breaking Changes Unflagged in Release Notes
+  problem_statement: Breaking API or behavioral changes are published in release notes without being flagged as breaking,
+    causing integrators to fail silently on upgrade and attributing the failure to their own code rather than the dependency.
+  causal_mechanism: No breaking-change classification requirement in the release process; authors underestimate downstream
+    impact.
+  domain_category: governance
+  system_boundary: versioning
+  impact:
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: ownership-protocol
+  wqo_links:
+  - temporal-accuracy
+  - reader-trust
+  project_links:
+  - *id002
+- id: P-112
+  title: Canonical URL Conflicts After SSG Migration
+  problem_statement: Documentation content is indexed at both old and new URL paths after a site generator migration, splitting
+    link equity and confusing search indexers about which URL is authoritative.
+  causal_mechanism: 301 redirects or canonical URL tags not implemented before or during migration; old URLs remain accessible
+    and indexed.
+  domain_category: migration
+  system_boundary: build-publish
+  impact:
+  - seo-discoverability
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links:
+  - seo-discoverability
+  - version-integrity
+  project_links:
+  - *id002
+- id: P-113
+  title: robots.txt Misconfiguration Blocking Doc Indexing
+  problem_statement: A robots.txt misconfiguration — introduced during deployment configuration or templating — disallows
+    all crawlers from the documentation site, causing the entire doc corpus to be de-indexed from search engines within weeks.
+  causal_mechanism: 'robots.txt generated from a template that defaults to Disallow: / in staging environments and is accidentally
+    deployed to production.'
+  domain_category: pipeline-process
+  system_boundary: build-publish
+  impact:
+  - seo-discoverability
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links:
+  - seo-discoverability
+  - metadata-completeness
+  project_links:
+  - *id002
+- id: P-114
+  title: Sitemap Not Regenerated After Navigation Restructure
+  problem_statement: After restructuring the documentation navigation and URL hierarchy, the sitemap.xml is not regenerated,
+    causing search indexers to crawl stale URL structures and miss new content that was reorganized.
+  causal_mechanism: Sitemap generation is a manual step not included in the deploy pipeline; regenerated only on initial site
+    launch.
+  domain_category: pipeline-process
+  system_boundary: build-publish
+  impact:
+  - seo-discoverability
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links:
+  - seo-discoverability
+  - metadata-completeness
+  project_links:
+  - *id002
+- id: P-115
+  title: Published Glossary Contradicts Inline Reference Usage
+  problem_statement: The published product glossary defines terms differently from how those terms are used in the reference
+    documentation and API descriptions, creating an authoritative contradiction that undermines both resources.
+  causal_mechanism: Glossary and reference documentation maintained by different teams without a shared controlled vocabulary
+    source of truth.
+  domain_category: governance
+  system_boundary: governance
+  impact:
+  - reader-comprehension
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: ownership-protocol
+  wqo_links:
+  - terminology-consistency
+  - controlled-vocabulary
+  project_links:
+  - *id001
+  - *id002
+- id: P-116
+  title: No Automated Terminology Checker in Authoring Pipeline
+  problem_statement: Authors have no automated tool to enforce controlled vocabulary during writing, causing prohibited terms,
+    deprecated product names, and inconsistent spellings to enter the published corpus unchecked.
+  causal_mechanism: Terminology enforcement is a manual editorial step applied inconsistently during review; no IDE or CI
+    integration for vocabulary checking.
+  domain_category: tool-defects
+  system_boundary: authoring
+  impact:
+  - reader-comprehension
+  - seo-discoverability
+  risk_severity: functional
+  resolution_pattern: semantic-linting
+  wqo_links:
+  - controlled-vocabulary
+  - terminology-consistency
+  project_links:
+  - *id001
+  - *id002
+- id: P-117
+  title: CDN Cache Invalidation Failure After Content Publish
+  problem_statement: After publishing updated documentation, CDN edge nodes continue serving stale cached content to users
+    because cache invalidation was not triggered or failed silently, causing users to read outdated information despite the
+    site having been updated.
+  causal_mechanism: Cache invalidation not automated in the deploy pipeline; manual purge required but not performed.
+  domain_category: pipeline-process
+  system_boundary: infrastructure
+  impact:
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links:
+  - version-integrity
+  project_links:
+  - *id002
+- id: P-118
+  title: TLS Certificate Expiry Blocking Documentation Site
+  problem_statement: The documentation site becomes inaccessible when its TLS certificate expires because certificate renewal
+    is a manual process not monitored by any automated alert, causing downtime until the expiry is noticed.
+  causal_mechanism: Certificate renewal not automated; no expiry monitoring configured.
+  domain_category: pipeline-process
+  system_boundary: infrastructure
+  impact:
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links:
+  - asset-validity
+  project_links:
+  - *id002
+- id: P-119
+  title: Object Storage Permission Drift Causing Asset Failures
+  problem_statement: Documentation images and downloadable assets become inaccessible after object storage bucket permissions
+    are tightened during a security audit, because the documentation site's service account is not in the allowlist.
+  causal_mechanism: Infrastructure permission changes not coordinated with documentation asset serving; no asset availability
+    monitoring.
+  domain_category: pipeline-process
+  system_boundary: infrastructure
+  impact:
+  - rendering
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: audit-gate
+  wqo_links:
+  - asset-validity
+  project_links:
+  - *id002
+- id: P-120
+  title: Long-Lived Doc Branch Diverging from Main
+  problem_statement: A documentation branch maintained for a major release diverges so far from main that merging it requires
+    resolving hundreds of conflicts, resulting in either a high-risk merge or the branch being abandoned with documentation
+    never published.
+  causal_mechanism: Documentation branch not rebased or merged from main regularly; branch treated as a separate codebase
+    rather than a short-lived fork.
+  domain_category: documentation-drift
+  system_boundary: versioning
+  impact:
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: ownership-protocol
+  wqo_links:
+  - code-doc-drift
+  - temporal-accuracy
+  project_links:
+  - *id002
+- id: P-121
+  title: Merge Conflict Leaving Corrupt Prose in Published Content
+  problem_statement: An unresolved or incorrectly resolved merge conflict leaves conflict markers (<<<<<<<, =======, >>>>>>>)
+    or duplicated prose segments in published documentation, visible to readers.
+  causal_mechanism: Merge conflict resolution performed manually without a post-merge content lint check to detect conflict
+    markers.
+  domain_category: quality-defects
+  system_boundary: versioning
+  impact:
+  - reader-trust
+  - reader-comprehension
+  risk_severity: credibility
+  resolution_pattern: ci-gate
+  wqo_links:
+  - structural-completeness
+  - coherence
+  project_links:
+  - *id002
+- id: P-122
+  title: Tag-Based Versioned Docs Serving Wrong Semver Range
+  problem_statement: Documentation versioned by Git tag and served based on semver range serves the wrong version to users
+    — a patch-version hotfix doc replaces a minor version doc, or a next/pre-release doc is served to stable-release users
+    — because the version selector logic is incorrect.
+  causal_mechanism: Version selector logic uses string comparison instead of semver-aware comparison; pre-release tags not
+    excluded from stable version resolution.
+  domain_category: pipeline-process
+  system_boundary: versioning
+  impact:
+  - reader-trust
+  risk_severity: functional
+  resolution_pattern: ci-gate
+  wqo_links:
+  - version-integrity
+  - temporal-accuracy
+  project_links:
   - *id002

@@ -1,0 +1,32 @@
+title: SEO and Discoverability
+description: 'The degree to which published content is indexable, findable, and accurately
+  represented in search results: correct robots.txt configuration, canonical URL consistency,
+  valid sitemap, and structured data markup.'
+wordnet:
+  term: seo discoverability
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: functional
+  stage: post-compositional
+  scale:
+  - document-level
+  - system-level
+  concern_type: technical
+  evaluator:
+  - automated
+  - human-technical-qa
+  determinism: risk-factor
+  writing_stage: publishing
+  address_when: publishing
+  impact:
+  - seo-discoverability
+  - reader-trust
+  risk_severity: functional
+  responsible_role:
+  - publisher
+  - technical-qa
+relationships: {}
+diagnostic_question: Is this content correctly indexed, canonicalized, and represented
+  in search results?

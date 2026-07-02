@@ -23,7 +23,7 @@ classification:
   address_when: publishing
   impact:
   - rendering
-  - accessibility
+  - accessibility-presentation
   risk_severity: cosmetic
   responsible_role: publisher
   audience_sensitivity: low-vision

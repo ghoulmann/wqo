@@ -1,0 +1,30 @@
+title: Metadata Completeness
+description: 'The presence and accuracy of all machine-readable metadata required
+  for discovery, sharing, and indexing: page title, meta description, Open Graph tags,
+  schema.org markup, and canonical URL.'
+wordnet:
+  term: metadata complete
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: functional
+  stage: post-compositional
+  scale: document-level
+  concern_type: technical
+  evaluator:
+  - automated
+  - human-technical-qa
+  determinism: rule-violation
+  writing_stage: publishing
+  address_when: publishing
+  impact:
+  - seo-discoverability
+  - reader-trust
+  risk_severity: functional
+  responsible_role:
+  - publisher
+  - technical-qa
+relationships: {}
+diagnostic_question: Does every published page have a complete and accurate set of
+  metadata required for indexing and social sharing?

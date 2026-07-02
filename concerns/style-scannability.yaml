@@ -33,7 +33,7 @@ classification:
   address_when: revising
   impact:
   - reader-comprehension
-  - accessibility
+  - accessibility-cognitive
   - seo-discoverability
   risk_severity: functional
   responsible_role:

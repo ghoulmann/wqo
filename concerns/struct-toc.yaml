@@ -26,7 +26,7 @@ classification:
   address_when: editing
   impact:
   - reader-comprehension
-  - accessibility
+  - accessibility-technical
   risk_severity: cosmetic
   responsible_role:
   - author

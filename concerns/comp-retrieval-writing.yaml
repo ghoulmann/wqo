@@ -1,0 +1,43 @@
+title: Retrieval-Oriented Writing
+description: 'The practice of structuring content so it can be accurately retrieved
+  by embedding-based or keyword search systems: self-contained chunks, explicit context
+  in headings, terminology consistency, and controlled vocabulary.'
+wordnet:
+  term: retrieval writing
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: computational
+  stage:
+  - compositional
+  - post-compositional
+  scale:
+  - paragraph-level
+  - document-level
+  concern_type:
+  - computational
+  - architectural
+  evaluator:
+  - automated
+  - human-information-architect
+  determinism: risk-factor
+  writing_stage:
+  - prewriting
+  - drafting
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: prewriting
+  impact:
+  - rag-retrieval
+  - seo-discoverability
+  risk_severity: functional
+  responsible_role:
+  - author
+  - information-architect
+  - ai-tool
+relationships: {}
+diagnostic_question: Would a retrieval system return this content accurately in response
+  to the questions it is designed to answer?

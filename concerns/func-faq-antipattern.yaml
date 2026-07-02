@@ -1,0 +1,37 @@
+title: FAQ Antipattern
+description: The use of a FAQ (Frequently Asked Questions) format as a substitute
+  for well-structured base documentation; FAQs signal that the primary documentation
+  fails to answer reader questions at the natural point of need.
+wordnet:
+  term: faq antipattern
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: functional
+  stage: post-compositional
+  scale: document-level
+  concern_type: architectural
+  evaluator:
+  - human-information-architect
+  - human-structural-editor
+  determinism: risk-factor
+  writing_stage:
+  - prewriting
+  - drafting
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: prewriting
+  impact:
+  - reader-comprehension
+  - seo-discoverability
+  risk_severity: credibility
+  responsible_role:
+  - information-architect
+  - structural-editor
+  - author
+relationships: {}
+diagnostic_question: Is this FAQ answering questions that should be answered in the
+  primary documentation structure?

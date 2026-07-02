@@ -1,0 +1,41 @@
+title: Context Window Planning
+description: The deliberate composition of content to fit within AI model context
+  window constraints, ensuring that all information required for accurate model response
+  is present within the context budget without exceeding it.
+wordnet:
+  term: context window
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: computational
+  stage:
+  - compositional
+  - post-compositional
+  scale:
+  - document-level
+  - system-level
+  concern_type: computational
+  evaluator:
+  - automated
+  - ai-tool
+  determinism: risk-factor
+  writing_stage:
+  - prewriting
+  - drafting
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: prewriting
+  impact:
+  - rag-retrieval
+  - rendering
+  risk_severity: functional
+  responsible_role:
+  - author
+  - ai-tool
+  - information-architect
+relationships: {}
+diagnostic_question: Is all information required for model comprehension present within
+  the context window budget?

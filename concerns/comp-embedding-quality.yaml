@@ -1,0 +1,37 @@
+title: Embedding Quality
+description: The degree to which a text chunk produces a vector embedding that accurately
+  represents its semantic content — determined by controlled vocabulary, consistent
+  terminology, minimal noise, and adequate semantic density.
+wordnet:
+  term: embedding quality
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: computational
+  stage:
+  - compositional
+  - post-compositional
+  scale:
+  - paragraph-level
+  - document-level
+  concern_type: computational
+  evaluator:
+  - automated
+  - ai-tool
+  determinism: risk-factor
+  writing_stage:
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: revising
+  impact: rag-retrieval
+  risk_severity: functional
+  responsible_role:
+  - ai-tool
+  - author
+  - technical-qa
+relationships: {}
+diagnostic_question: Would the embedding of this text place it near semantically related
+  content in vector space?

@@ -32,7 +32,7 @@ classification:
   address_when: drafting
   impact:
   - reader-comprehension
-  - accessibility
+  - accessibility-cognitive
   risk_severity: functional
   responsible_role:
   - author

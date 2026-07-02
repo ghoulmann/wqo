@@ -1,0 +1,36 @@
+title: Source Integrity
+description: The degree to which claims in a document are traceable to authoritative,
+  verifiable, and current sources; source integrity fails when claims cannot be attributed,
+  sources are outdated, or references are fabricated.
+wordnet:
+  term: source integrity
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: functional
+  stage: post-compositional
+  scale: document-level
+  concern_type: technical
+  evaluator:
+  - human-structural-editor
+  - human-peer-reviewer
+  determinism: risk-factor
+  writing_stage:
+  - drafting
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: drafting
+  impact:
+  - reader-trust
+  - author-credibility
+  risk_severity: credibility
+  responsible_role:
+  - author
+  - peer-reviewer
+  - structural-editor
+relationships: {}
+diagnostic_question: Can every non-trivial claim in this document be traced to a verifiable,
+  current source?

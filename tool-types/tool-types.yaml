@@ -499,3 +499,202 @@ tool_types:
       - GitHub (most common for public Docs-as-Code)
       - GitLab (self-hosted option)
       - Bitbucket (Atlassian ecosystem)
+
+  - id: rendering-engine
+    name: Rendering Engine
+    category: digital-software
+    description: >
+      Software that converts source markup or structured content into a rendered
+      output format (PDF, EPUB, DOCX, HTML) distinct from the authoring format.
+      Unlike SSGs which produce web output from Markdown, rendering engines
+      handle format conversion for print, ebook, or office document delivery.
+    stage: [publishing]
+    persona: [publisher, technical-qa]
+    also_known_as: [document converter, typesetter, format exporter]
+    examples:
+      - Pandoc
+      - LaTeX / XeLaTeX
+      - WeasyPrint
+      - Prince XML
+      - wkhtmltopdf
+
+  - id: accessibility-validator
+    name: Accessibility Validator
+    category: digital-software
+    description: >
+      Automated tool that performs DOM-level or rendered-page checks against
+      WCAG success criteria — alt text presence, contrast ratios, keyboard
+      focus order, ARIA landmark correctness — distinct from markup linters,
+      which check source code rather than rendered output.
+    stage: [publishing]
+    persona: [technical-qa, publisher, information-architect]
+    also_known_as: [WCAG checker, a11y validator, accessibility auditor]
+    examples:
+      - pa11y
+      - axe-core
+      - Lighthouse (accessibility audit)
+      - WAVE
+      - IBM Equal Access Checker
+
+  - id: link-checker
+    name: Link Checker
+    category: digital-software
+    description: >
+      Automated tool that crawls a document set or published site and verifies
+      that all internal and external hyperlinks resolve to valid, accessible
+      targets. Detects 404s, redirect chains, and anchors pointing to removed
+      headings.
+    stage: [publishing]
+    persona: [technical-qa, publisher]
+    also_known_as: [broken link detector, URL validator, dead link checker]
+    examples:
+      - htmltest
+      - lychee
+      - Linkinator
+      - broken-link-checker
+
+  - id: screenshot-regression-tool
+    name: Screenshot Regression Tool
+    category: digital-software
+    description: >
+      Visual testing tool that captures baseline screenshots of rendered pages
+      and compares subsequent builds pixel-by-pixel or via perceptual hashing
+      to detect unintended visual changes in documentation layout, typography,
+      or component rendering.
+    stage: [publishing]
+    persona: [technical-qa]
+    also_known_as: [visual regression tester, pixel differ, UI snapshot tool]
+    examples:
+      - Percy
+      - Chromatic
+      - BackstopJS
+      - Playwright visual comparisons
+      - Applitools
+
+  - id: api-doc-generator
+    name: API Documentation Generator
+    category: digital-software
+    description: >
+      Tool that generates reference documentation from source code annotations,
+      type signatures, or API specification files (OpenAPI, AsyncAPI, GraphQL
+      schema). Produces structured HTML or Markdown reference from code rather
+      than hand-authored prose.
+    stage: [publishing]
+    persona: [author, publisher, technical-qa]
+    also_known_as: [autodoc tool, reference generator, spec renderer]
+    examples:
+      - Swagger UI / Redoc (OpenAPI)
+      - Sphinx autodoc (Python)
+      - Doxygen (C/C++/Java)
+      - TypeDoc (TypeScript)
+      - JSDoc
+
+  - id: terminology-management-tool
+    name: Terminology Management Tool
+    category: digital-software
+    description: >
+      Software for defining, storing, enforcing, and checking controlled
+      vocabularies across a content corpus. Detects prohibited terms, deprecated
+      product names, inconsistent spellings, and violations of house style
+      terminology policy during authoring or at build time.
+    stage: [drafting, revising, editing]
+    persona: [copy-editor, line-editor, publisher, author]
+    also_known_as: [controlled vocabulary tool, term checker, style enforcer]
+    examples:
+      - Acrolinx
+      - SDL MultiTerm
+      - Congree
+      - TermWeb
+      - Vale (with terminology rules)
+
+  - id: translation-management-platform
+    name: Translation Management Platform
+    category: digital-software
+    description: >
+      Platform managing the full localization production pipeline: source string
+      extraction, machine translation, human post-editing workflow, translation
+      memory, glossary enforcement, and locale-file publishing. Distinct from
+      a CMS, which manages content; a TMP manages translation.
+    stage: [publishing]
+    persona: [publisher, author]
+    also_known_as: [TMS, localization platform, l10n tool, translation workflow]
+    examples:
+      - Phrase (formerly Phrase Strings)
+      - Lokalise
+      - Crowdin
+      - Weblate (open source)
+      - Transifex
+
+  - id: digital-asset-management
+    name: Digital Asset Management
+    category: digital-software
+    description: >
+      System for storing, organizing, versioning, and distributing media assets
+      (images, videos, diagrams, brand files) used across documentation and
+      marketing content. Provides a single source of truth for assets that
+      appear in multiple documents, preventing duplication and stale copies.
+    stage: [prewriting, drafting, publishing]
+    persona: [author, publisher, information-architect]
+    also_known_as: [DAM, media library, asset repository]
+    examples:
+      - Cloudinary
+      - Bynder
+      - Canto
+      - Brandfolder
+      - Widen Collective
+
+  - id: readability-analyzer
+    name: Readability Analyzer
+    category: digital-software
+    description: >
+      Tool that scores prose against empirical readability metrics (Flesch
+      Reading Ease, Flesch-Kincaid Grade Level, Gunning Fog Index, SMOG)
+      to estimate reading difficulty. Distinct from grammar checkers, which
+      flag errors, and style linters, which enforce conventions — readability
+      analyzers produce difficulty scores, not correction suggestions.
+    stage: [revising, editing]
+    persona: [line-editor, author, self-editor]
+    also_known_as: [readability scorer, text complexity tool, grade-level tool]
+    examples:
+      - Readable.io
+      - Hemingway Editor (scoring mode)
+      - textstat (Python library)
+      - Vale with readability rules
+      - LanguageTool readability metrics
+
+  - id: changelog-manager
+    name: Changelog Manager
+    category: digital-software
+    description: >
+      Tool that automates or validates the production of structured, parseable
+      CHANGELOG files from commit history, conventional commits, or changeset
+      files. Ensures consistent format, semver compliance, and linking between
+      release notes and issue trackers.
+    stage: [publishing]
+    persona: [author, publisher, technical-qa]
+    also_known_as: [release notes tool, CHANGELOG generator, release automation]
+    examples:
+      - Changesets
+      - semantic-release
+      - Release Drafter (GitHub)
+      - keep-a-changelog linter
+      - git-cliff
+
+  - id: developer-portal-platform
+    name: Developer Portal Platform
+    category: platform-infrastructure
+    description: >
+      Specialized platform for hosting developer-facing documentation with
+      integrated API catalog, versioned reference docs, audience targeting,
+      search, and SDK distribution. Distinguished from generic SSGs by
+      developer-experience features: try-it-now API consoles, changelog feeds,
+      and multi-product navigation.
+    stage: [publishing]
+    persona: [publisher, information-architect]
+    also_known_as: [dev portal, developer hub, API documentation portal]
+    examples:
+      - Backstage (Spotify)
+      - ReadMe
+      - Zoomin
+      - Stoplight Workspace
+      - Redocly

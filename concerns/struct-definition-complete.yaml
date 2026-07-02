@@ -1,0 +1,44 @@
+title: Definition Completeness
+description: The requirement that every term of art, acronym, or domain-specific concept
+  introduced in a document is defined at or before its first use, ensuring readers
+  can engage with the content without external reference.
+wordnet:
+  term: definition complete
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale:
+  - word-level
+  - document-level
+  concern_type:
+  - logical
+  - architectural
+  evaluator:
+  - human-line-editor
+  - automated
+  determinism: rule-violation
+  writing_stage:
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: revising
+  impact:
+  - reader-comprehension
+  - accessibility-cognitive
+  risk_severity: functional
+  responsible_role:
+  - author
+  - line-editor
+  - structural-editor
+  audience_sensitivity:
+  - domain-novice
+  - second-language-learner
+relationships: {}
+diagnostic_question: Is every term of art and acronym defined at or before its first
+  use?

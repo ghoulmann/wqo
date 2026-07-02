@@ -24,7 +24,7 @@ classification:
   - publishing
   address_when: editing
   impact:
-  - accessibility
+  - accessibility-presentation
   - rendering
   - reader-comprehension
   risk_severity: functional

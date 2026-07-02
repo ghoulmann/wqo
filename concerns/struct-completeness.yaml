@@ -1,0 +1,36 @@
+title: Structural Completeness
+description: The degree to which a document contains all sections and elements required
+  by its type — no missing prerequisites in a tutorial, no undocumented parameters
+  in a reference entry.
+wordnet:
+  term: completeness
+  definitions: []
+  synonyms: []
+  related_forms: []
+classification:
+  layer: structural
+  stage:
+  - compositional
+  - post-compositional
+  scale: document-level
+  concern_type: architectural
+  evaluator:
+  - human-structural-editor
+  - automated
+  determinism: rule-violation
+  writing_stage:
+  - revising
+  - peer-review
+  - editing
+  - publishing
+  address_when: revising
+  impact:
+  - reader-comprehension
+  - reader-trust
+  risk_severity: functional
+  responsible_role:
+  - structural-editor
+  - author
+relationships: {}
+diagnostic_question: Does this document contain all sections required by its genre
+  and topic type?
