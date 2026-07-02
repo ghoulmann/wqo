@@ -3,13 +3,14 @@
   "$id": "wqo:concept.schema",
   "title": "Writing Quality Ontology — Concept Entry",
   "description": "Frontmatter schema for concept entries in the Writing Quality Ontology.",
-  "x-version": "0.5.0",
+  "x-version": "0.6.0",
   "x-changelog": {
     "0.1.0": "Initial 5-layer flat taxonomy (Functional, Computational, Structural, Micro, Stylistic).",
     "0.2.0": "Expanded to 6 classification dimensions; added compositional stage, scale, concern type, evaluator, determinism.",
     "0.3.0": "Added D7 writing_stage (descriptive) and D8 address_when (triage/prescriptive); added D9 engineering_stage. Layer 4 renamed Mechanical; Layer 5 renamed Editorial.",
     "0.4.0": "Added D10 impact, D11 risk_severity, D12 responsible_role. Distinguished evaluator (detects) from responsible_role (owns). Added prerequisite_for and cascade_threshold.",
-    "0.5.0": "Added D13 audience_sensitivity. Split 'accessibility' impact into accessibility-technical, accessibility-presentation, accessibility-cognitive. Added cognitive-overload and inclusivity to impact enum. Noted that risk_severity is audience-conditional."
+    "0.5.0": "Added D13 audience_sensitivity. Split 'accessibility' impact into accessibility-technical, accessibility-presentation, accessibility-cognitive. Added cognitive-overload and inclusivity to impact enum. Noted that risk_severity is audience-conditional.",
+    "0.6.0": "Added section-level and corpus-level to D3 scale enum, covering publishing-stage and computational concerns that operate above the document unit (site-wide metadata, corpus embedding quality, system-level SEO)."
   },
   "type": "object",
   "required": ["title"],
@@ -210,7 +211,7 @@
 
     "scaleEnum": {
       "type": "string",
-      "enum": ["word-level", "sentence-level", "paragraph-level", "document-level", "system-level"]
+      "enum": ["word-level", "sentence-level", "paragraph-level", "section-level", "document-level", "system-level", "corpus-level"]
     },
     "scaleEnum_or_array": {
       "oneOf": [
